@@ -4,9 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="scss/index.scss">
+  <script src="scripts/modalWindow.js" defer></script>
   <title>Almost Pinterest</title>
 </head>
 <body>
-  
+  <div class="wrapper">
+    <header class="nav">
+        <a class="logo">
+                <i class="fab fa-pinterest-p"></i>
+                <p>Pinterest</p>
+        </a>
+        <input class="nav__input" type="text">
+        <select class="nav__card-list">
+            <option>Доска 1</option>
+            <option>Доска 2</option>
+            <option>Доска 3</option>
+        </select>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero__previous"><</div>
+            <p class="hero__description">Доска 1</p>
+            <div class="hero__next">></div>
+        </section>
+        <section class="cards-list">
+            <button id ="btnActive">Нажми для появления мадального окна</button>
+        </section>
+    </main>
+</div>
 </body>
 </html>

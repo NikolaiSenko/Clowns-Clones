@@ -1,0 +1,21 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+
+    &__input{
+        border-radius: 16px;
+        border: none;
+        width: 70%;
+        padding: 1%;
+        background-color: #d1d1d1;
+        color: white;
+    }
+
+    &__card-list{
+        border-radius: 16px;
+        padding: 1%;
+        background-color: red;
+        cursor: pointer; 
+    }
+}

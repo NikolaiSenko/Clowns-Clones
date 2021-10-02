@@ -1,0 +1,16 @@
+.choice-window{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border: solid black;
+    box-shadow: 3px 3px 15px;
+}
+
+.choice-btn{
+    padding: 3%;
+    margin: 4%;
+    border-radius: 16px;
+    box-shadow: 3px 3px 15px;
+    background-color: $red;
+}

@@ -1,0 +1,21 @@
+.cards-list{
+
+}
+
+.card{
+    background-color:$red;
+
+    &__information{
+        display: flex;
+
+    }
+}
+
+.avatar-card{
+    border-radius: 100%;
+    background-color: royalblue;
+}
+
+.description-card{
+
+}
