@@ -1,0 +1,33 @@
+.container {
+  @include rwd(375) {
+    column-count: 2 !important;
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+  }
+  @include sm {
+    margin-left: 0.5rem !important;
+    column-count: 3 !important;
+  }
+  @include lg {
+    margin-left: 0.1rem !important;
+    margin-right: 0.1rem !important;
+    column-count: 5 !important;
+  }
+  @include xl {
+    column-count: 6 !important;
+  }
+  @include rwd(1300) {
+    column-count: 6 !important;
+    margin: 0 20px !important;
+  }
+  @include xxl {
+    margin-left: 2rem !important;
+    column-count: 7 !important;
+  }
+}
+.header {
+  @include rwd(340) {
+    display: block !important;
+    display: -webkit-box !important;
+  }
+}

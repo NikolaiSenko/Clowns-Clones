@@ -1,0 +1,34 @@
+.header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  &__button {
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+  &__search {
+    display: block;
+    flex: auto;
+    margin: 0 0.5rem ;
+    border-radius: 30px;
+    border: solid 4px #d0d0d0;
+    background-color: #d0d0d0;
+    &:hover {
+      border: solid 4px #bbbbbb;
+      background-color: #bbbbbb;
+    }
+    &:focus {
+      border: solid 4px rgb(25, 123, 252);
+    }
+  }
+  &__select {
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+}
