@@ -27,7 +27,10 @@
 }
 .header {
   @include rwd(340) {
-    display: block !important;
-    display: -webkit-box !important;
+    display: block;
+    display: -webkit-box;
+  }
+  @include sm {
+    display: flex;
   }
 }
