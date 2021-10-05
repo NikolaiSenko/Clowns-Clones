@@ -21,5 +21,8 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "sass": "^1.42.1"
+  },
+  "dependencies": {
+    "masonry-layout": "^4.2.2"
   }
 }
