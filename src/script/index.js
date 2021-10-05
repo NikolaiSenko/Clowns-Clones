@@ -1,8 +1,6 @@
 import {createHeaderBoard, createAddWindow, createСhoiceWindow, createCard} from './templates.js';
 
-const btnSave = document.querySelector('.card__button--top');
-const btnChoice = document.querySelector('.card__button--bottom');
-const modalActive = document.body;
+const main = document.querySelector('.main');
 const selectBoard = document.querySelector('select');
 
 //Create window
@@ -36,21 +34,21 @@ function onСhoiceWindow(event){
 
 //RENDER
 function renderBoard(board){
-    modalActive.innerHTML = '';
+    main.innerHTML = '';
     const headerBoard = createHeaderBoard(board);
     const card = createCard();
-    modalActive.append(headerBoard, card);
+    main.append(headerBoard, card);
 }
 
 //Show window
 function showChoiceWindow(){
     bindСhoiceWindow(сhoiceWindow);
-    modalActive.append(сhoiceWindow);
+    main.append(сhoiceWindow);
 }
 
 function showAddWindow(){
     bindBoardWindow(addWindow);
-    modalActive.append(addWindow);
+    main.append(addWindow);
 }
 
 function showComplaintWindow(){
@@ -58,8 +56,20 @@ function showComplaintWindow(){
 }
 
 //Listener
-btnSave.addEventListener('click', showAddWindow);
-btnChoice.addEventListener('click', showChoiceWindow);
+main.addEventListener('click', (event) => {
+    const btnSave = document.querySelectorAll('.card__button--top');
+    const btnChoice = document.querySelectorAll('.card__button--bottom');
+    for (let save of btnSave){
+        save.onclick =  function(){
+            showAddWindow();
+        }
+    }
+    for (let choice of btnChoice){
+        choice.onclick = function(){
+            showChoiceWindow();
+        }
+    }
+})
 
 selectBoard.addEventListener('change',(event) =>{
     const value = event.target.value;
