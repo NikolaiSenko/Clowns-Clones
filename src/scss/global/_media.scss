@@ -1,36 +1,38 @@
-.container {
-  @include rwd(375) {
-    column-count: 2 !important;
-    margin-left: 2px !important;
-    margin-right: 2px !important;
+@media (min-width: 320px) and (max-width: 505px) {
+  .header {
+    padding: 0.1rem;
+    font-size: small;
+    &__button {
+      padding: 1.1rem;
+    }
+    &__search {
+      max-width: 35%;
+      border: solid 0.2rem $ultra-lite-grey;
+      &:hover {
+        border: solid 0.2rem $lite-grey;
+      }
+      &:focus {
+        border: solid 0.2rem rgb(25, 123, 252);
+      }
+    }
   }
-  @include sm {
-    margin-left: 0.5rem !important;
-    column-count: 3 !important;
-  }
-  @include lg {
-    margin-left: 0.1rem !important;
-    margin-right: 0.1rem !important;
-    column-count: 5 !important;
-  }
-  @include xl {
-    column-count: 6 !important;
-  }
-  @include rwd(1300) {
-    column-count: 6 !important;
-    margin: 0 20px !important;
-  }
-  @include xxl {
-    margin-left: 2rem !important;
-    column-count: 7 !important;
-  }
-}
-.header {
-  @include rwd(340) {
-    display: block;
-    display: -webkit-box;
-  }
-  @include sm {
-    display: flex;
+  .container {
+    .card {
+      max-width: 10rem;
+      &__pictures {
+        max-width: 10rem;
+      }
+      &__button--top {
+        padding: 0.1rem;
+        font-size: small;
+      }
+      &__button--bottom {
+        padding: 0.2rem;
+      }
+      &__avatars {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
   }
 }
