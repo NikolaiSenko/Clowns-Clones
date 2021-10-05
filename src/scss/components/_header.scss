@@ -1,32 +1,40 @@
 .header {
-  margin: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1rem;
+  background-color: white;
   &__button {
-    padding: 10px;
-    border-radius: 30px;
+    font-weight: bold;
+    padding: 1.1rem;
+    border-radius: 3rem;
     border: none;
     color: white;
     background-color: black;
   }
   &__search {
+    font-weight: bold;
     display: block;
     flex: auto;
-    margin: 0 0.5rem ;
-    border-radius: 30px;
-    border: solid 4px #d0d0d0;
-    background-color: #d0d0d0;
+    margin: 0 0.5rem;
+    border-radius: 3rem;
+    border: none;
+    border: solid 0.4rem $ultra-lite-grey;
+    background-color: $ultra-lite-grey;
     &:hover {
-      border: solid 4px #bbbbbb;
-      background-color: #bbbbbb;
+      border: solid 0.4rem $lite-grey;
+      background-color: $lite-grey;
     }
     &:focus {
-      border: solid 4px rgb(25, 123, 252);
+      border: solid 0.4rem rgb(25, 123, 252);
     }
   }
   &__select {
-    padding: 10px;
-    border-radius: 30px;
+    font-weight: bold;
+    padding: 1.1rem;
+    border-radius: 3rem;
     border: none;
     color: white;
     background-color: black;
