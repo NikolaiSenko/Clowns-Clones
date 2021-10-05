@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinterest</title>
+    <link rel="stylesheet" href="scss/main.scss" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <button class="header__button"  onclick="document.location='#'">Pinterest</button>
+      <input class="header__search" type="search" placeholder="Поиск" />
+      <select class="header__select">
+        <option>Выбрать</option>
+        <option>Доска 1</option>
+        <option>Доска 2</option>
+        <option>Доска 3</option>
+      </select>
+    </header>
+    <div class="main">
+      <div class="container">
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/5.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <p class="card__descriptions">Lorem, ipsum dolor.</Lo></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://vjoy.cc/wp-content/uploads/2019/06/2-69.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://vjoy.cc/wp-content/uploads/2019/06/2-69.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/4.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/7.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/1jpg.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/5.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://www.tremglobal.com/uploads/blog/tallest-buildings-in-spain-681.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://www.tremglobal.com/uploads/blog/tallest-buildings-in-spain-681.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://lh3.googleusercontent.com/proxy/CSr0A-Qs6ju428ZX-bOUCuP4eoHjpStks3bpRK3VYapA02PO6yvf62ctobFDfCNKxITPxcMnAe3cmA5FMvafu7dTQYxC4iuEJx8z5GrqscSIcR6pNQ" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://www.ejin.ru/wp-content/uploads/2017/09/1-716.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
+            <p class="card__descriptions">Lorem, ipsum dolor.</Lo></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://vjoy.cc/wp-content/uploads/2019/06/2-69.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://vjoy.cc/wp-content/uploads/2019/06/2-69.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/4.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/7.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/1jpg.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/5.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/6.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://www.tremglobal.com/uploads/blog/tallest-buildings-in-spain-681.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="https://www.tremglobal.com/uploads/blog/tallest-buildings-in-spain-681.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/2.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="img/photos/3.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://lh3.googleusercontent.com/proxy/CSr0A-Qs6ju428ZX-bOUCuP4eoHjpStks3bpRK3VYapA02PO6yvf62ctobFDfCNKxITPxcMnAe3cmA5FMvafu7dTQYxC4iuEJx8z5GrqscSIcR6pNQ" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <img class="card__pictures" src="https://www.ejin.ru/wp-content/uploads/2017/09/1-716.jpg" />
+            <button class="card__button--top">Сохранить</button>
+            <button class="card__button--bottom">&bull;&bull;&bull;</button>
+          </div>
+          <div class="card__footer">
+            <img class="card__avatars" src="img/avatars/2.jpg" />
+            <p class="card__descriptions">Lora</p>
+          </div>
+        </div>
+    </div>
+   
+    <script src="script/masonry.min.js"></script>
+  </body>
+</html>

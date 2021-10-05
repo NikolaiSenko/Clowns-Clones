@@ -1,0 +1,28 @@
+{
+  "name": "Clowns-Clones",
+  "version": "1.0.0",
+  "description": "group project of creating clone of Pinterest",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --no-source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolaiSenko/Clowns-Clones.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikolaiSenko/Clowns-Clones/issues"
+  },
+  "homepage": "https://github.com/NikolaiSenko/Clowns-Clones#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.42.1"
+  },
+  "dependencies": {
+    "masonry-layout": "^4.2.2"
+  }
+}
