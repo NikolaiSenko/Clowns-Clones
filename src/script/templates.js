@@ -1,13 +1,19 @@
+import {onBoardWindow, onСhoiceWindow} from './index.js'
+import {changeBoard} from './board.js'
+
 function createHeaderBoard(board){
     const headerBoard = createElement('div');
-    const header = createElement('header','','header');
-    const btnHeader = createElement('button','Pinterest','header__button');
-    const inputHeader = createElement('input', '','header__search');
+    const header = createElement('header', 'header');
+    const btnHeader = createElement('button', 'header__button', 'Pinterest');
+    const inputHeader = createElement('input', 'header__search');
     
-    const hero = createElement('section','','hero');
-    const heroPrevious = createElement('div','<','hero__previous');
-    const heroDescription = createElement('p', board, 'hero__description');
-    const heroNext = createElement('div','>','hero__next');
+    const hero = createElement('section', 'hero-board');
+    const heroPrevious = createElement('div', 'hero__previous', '<');
+    heroPrevious.id = 'previous-board'
+    const heroDescription = createElement('p', 'hero__description', board);
+    const heroNext = createElement('div', 'hero__next', '>');
+    heroNext.id = 'next-board'
+    hero.addEventListener('click', changeBoard);
 
     hero.append(heroPrevious, heroDescription, heroNext);
     header.append(btnHeader, inputHeader);
@@ -16,40 +22,49 @@ function createHeaderBoard(board){
 }
 
 function createAddWindow(){
-    const windowAdd = createElement('div', '','background-window');
-    const modalAdd = createElement('div', '','add-window');
-    const firstBoard = createElement('button', 'Доска 1','btn-choice-board', 'board1');
-    const secondBoard = createElement('button', 'Доска 2','btn-choice-board', 'board2');
-    const thirdBoard = createElement('button', 'Доска 3','btn-choice-board', 'board3');
-    const btnClose = createElement('button', 'Отмена', 'btn-close','btn-close');
+    const windowAdd = createElement('div', 'background-window');
+    const modalAdd = createElement('div', 'add-window');
+    const firstBoard = createElement('button', 'btn-choice-board', 'Animals');
+    firstBoard.id = 'animals-id';
+    const secondBoard = createElement('button', 'btn-choice-board', 'Films');
+    secondBoard.id = 'films-id';
+    const thirdBoard = createElement('button', 'btn-choice-board', 'Others');
+    thirdBoard.id = 'others-id';
+    const btnClose = createElement('button', 'btn-close', 'Отмена');
+    btnClose.id = 'btn-close';
     modalAdd.append(firstBoard, secondBoard, thirdBoard, btnClose);
+    modalAdd.addEventListener('click', onBoardWindow);
     windowAdd.append(modalAdd);
     return windowAdd;
 }
 
 function createСhoiceWindow(){
-    const modalChoice = createElement('div', '','background-window');
-    const modalSelection = createElement('div', '','choice-window');
-    const btnAdd = createElement('button', 'Добавить на доску','choice-btn','btn-add');
-    const btnСomplaint = createElement('button', 'Пожаловаться','choice-btn','btn-complaint');
-    const btnClose = createElement('button', 'Отмена', 'btn-close','btn-close');
+    const modalChoice = createElement('div', 'background-window');
+    const modalSelection = createElement('div', 'choice-window');
+    const btnAdd = createElement('button', 'choice-btn', 'Добавить на доску');
+    btnAdd.id = 'btn-add';
+    const btnСomplaint = createElement('button', 'choice-btn', 'Пожаловаться');
+    btnСomplaint.id = 'btn-complaint';
+    const btnClose = createElement('button', 'btn-close', 'Отмена');
+    btnClose.id = 'btn-close'
     modalSelection.append(btnAdd, btnСomplaint, btnClose);
+    modalSelection.addEventListener('click', onСhoiceWindow);
     modalChoice.append(modalSelection);
 
     return modalChoice;
 }
 
 function createCard(linkImgCard, linkImgAvatar){
-    const card = createElement('div','','card');
-    const cardHeader = createElement('div','','card__header');
-    const cardPictures = createElement('img','','card__pictures');
+    const card = createElement('div', 'card');
+    const cardHeader = createElement('div', 'card__header');
+    const cardPictures = createElement('img', 'card__pictures');
     cardPictures.src = linkImgCard
-    const cardBtnTop = createElement('buttom','Сохранить','card__button__top');
-    const cardBtnBottom = createElement('buttom','&bull;&bull;&bull;','card__button__bottom');
-    const cardFooter = createElement('div','','card__footer');
-    const cardAvatars = createElement('img','','card__avatars');
+    const cardBtnTop = createElement('buttom', 'card__button__top', 'Сохранить');
+    const cardBtnBottom = createElement('buttom', 'card__button__bottom', '...');
+    const cardFooter = createElement('div', 'card__footer');
+    const cardAvatars = createElement('img', 'card__avatars');
     cardAvatars.src = linkImgAvatar;
-    const cardDescription = createElement('div','Lora','card__descriptions');
+    const cardDescription = createElement('div', 'card__descriptions', 'Lora');
 
     cardHeader.append(cardPictures, cardBtnTop, cardBtnBottom);
     cardFooter.append(cardAvatars, cardDescription);
@@ -58,11 +73,10 @@ function createCard(linkImgCard, linkImgAvatar){
     return card;
 }
 
-function createElement(element, text = '', className, id){
+function createElement(element, className, text = ''){
     const newElement = document.createElement(element);
     const textElement = document.createTextNode(text);
     newElement.className = className;
-    newElement.id = id;
     newElement.append(textElement);
 
     return newElement;

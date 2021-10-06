@@ -1,21 +1,37 @@
-import {createHeaderBoard, createAddWindow, createСhoiceWindow, createCard} from './templates.js';
+import {createAddWindow, createСhoiceWindow} from './templates.js';
+import {getStorageData, setStorageData} from './storageApi.js';
+import {renderBoard} from './board'
+
 
 const main = document.querySelector('.main');
 const selectBoard = document.querySelector('select');
+let cardId = 0;
 
 //Create window
 const addWindow = createAddWindow();
 const сhoiceWindow = createСhoiceWindow();
 
 //Function ON
-function onBoardWindow(event){
+function onBoardWindow(){
     const target = event.target;
-    if(target.id === 'board1'){
-        alert('Сохранено на доску 1')
-    }else if(target.id === 'board2'){
-        alert('Сохранено на доску 2');
-    }else if(target.id === 'board3'){
-        alert('Сохранено на доску 3'); 
+    if(target.id === 'animals-id'){
+        let boardData = getStorageData('Animals');
+        boardData.push(cardId);
+        setStorageData('Animals', boardData);
+        alert('Сохранено на доску Animals');
+        addWindow.remove();
+    }else if(target.id === 'films-id'){
+        let boardData = getStorageData('Films');
+        boardData.push(cardId);
+        setStorageData('Films', boardData);
+        alert('Сохранено на доску Films');
+        addWindow.remove();
+    }else if(target.id === 'others-id'){
+        let boardData = getStorageData('Others');
+        boardData.push(cardId);
+        setStorageData('Others', boardData);
+        alert('Сохранено на доску Others');
+        addWindow.remove();
     }else if(target.id === 'btn-close'){
         addWindow.remove();
     }
@@ -32,22 +48,12 @@ function onСhoiceWindow(event){
     }
 }
 
-//RENDER
-function renderBoard(board){
-    main.innerHTML = '';
-    const headerBoard = createHeaderBoard(board);
-    const card = createCard();
-    main.append(headerBoard, card);
-}
-
 //Show window
 function showChoiceWindow(){
-    bindСhoiceWindow(сhoiceWindow);
     main.append(сhoiceWindow);
 }
 
 function showAddWindow(){
-    bindBoardWindow(addWindow);
     main.append(addWindow);
 }
 
@@ -59,6 +65,8 @@ function showComplaintWindow(){
 main.addEventListener('click', (event) => {
     const btnSave = document.querySelectorAll('.card__button--top');
     const btnChoice = document.querySelectorAll('.card__button--bottom');
+    const cardHeader = event.target.parentElement;
+    cardId = cardHeader.parentElement.id
     for (let save of btnSave){
         save.onclick =  function(){
             showAddWindow();
@@ -73,19 +81,13 @@ main.addEventListener('click', (event) => {
 
 selectBoard.addEventListener('change',(event) =>{
     const value = event.target.value;
-    if (value === 'desk1'){
-        renderBoard('Доска 1');
-    }else if(value === 'desk2'){
-        renderBoard('Доска 2');
-    }else if(value === 'desk3'){
-        renderBoard('Доска 3');
+    if (value === 'animals'){
+        renderBoard('Animals');
+    }else if(value === 'films'){
+        renderBoard('Films');
+    }else if(value === 'others'){
+        renderBoard('Others');
     }
 })
 
-function bindBoardWindow(boardWindow){
-    boardWindow.addEventListener('click', onBoardWindow); //функция навешивает слушатель событий на окно с досками
-}
-
-function bindСhoiceWindow(choiceWindow){
-    choiceWindow.addEventListener('click', onСhoiceWindow); //функция навешивает слушатель событий на окно с выбором (добавить или пожаловаться)
-}
+export {onBoardWindow, onСhoiceWindow}
