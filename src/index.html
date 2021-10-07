@@ -14,6 +14,7 @@
       referrerpolicy="no-referrer"
     />
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="script/index.js" type="module" defer></script>
   </head>
   <body>
     <header class="header">
@@ -21,14 +22,14 @@
       <input class="header__search" type="search" placeholder="Поиск" />
       <select class="header__select">
         <option>Выбрать</option>
-        <option>Доска 1</option>
-        <option>Доска 2</option>
-        <option>Доска 3</option>
+        <option value="animals">Animals</option>
+        <option value="films">Films</option>
+        <option value="others">Others</option>
       </select>
     </header>
     <div class="main">
       <div class="container">
-        <div class="card">
+        <div class="card" id="1">
           <div class="card__header">
             <img class="card__pictures" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
             <button class="card__button--top">Сохранить</button>
@@ -39,7 +40,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="2">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/animals_dog.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -50,7 +51,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="3">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/japan.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -61,7 +62,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="4">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/movie_joker.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -72,7 +73,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="5">
           <div class="card__header">
             <img class="card__pictures" src="https://1gai.ru/uploads/posts/2016-09/1474553782_480.png" />
             <button class="card__button--top">Сохранить</button>
@@ -83,7 +84,7 @@
             <p class="card__descriptions">Lorem, ipsum dolor.</Lo></p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="6">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/movie_venom.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -94,7 +95,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="7">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/nature_mount.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -105,7 +106,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="8">
           <div class="card__header">
             <img class="card__pictures" src="https://vjoy.cc/wp-content/uploads/2019/06/2-69.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -116,7 +117,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="9">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/sitcom_friends.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -127,7 +128,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="10">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/sport_football.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -138,7 +139,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="11">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/sitcom_how-i-met-your-mother.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -149,7 +150,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="12">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/animals_zebra.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -160,7 +161,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="13">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/funny-animals_dog.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -171,7 +172,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="14">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/movie_space-jam.jpg" />
             <button class="card__button--top">Сохранить</button>
@@ -182,7 +183,7 @@
             <p class="card__descriptions">Lora</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="15">
           <div class="card__header">
             <img class="card__pictures" src="img/photos/cartoon_panda.jpeg" />
             <button class="card__button--top">Сохранить</button>

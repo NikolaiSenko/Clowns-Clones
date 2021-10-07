@@ -1,0 +1,28 @@
+.hero-board{
+    display: flex;
+   justify-content: space-around;
+    padding: 5%;
+    
+    &__previous{
+        font-size: 150%;
+        cursor: pointer;
+        background-color: coral;
+        padding: 2%;
+        border-radius: 16px;
+        box-shadow: 5px 5px 5px #d1d1d1;
+    }
+  
+    &__description{
+        font-size: 200%;
+    }
+  
+    &__next{
+        font-size: 150%;
+        cursor: pointer;
+        background-color: coral;
+        padding: 2%;
+        border-radius: 16px;
+        box-shadow: 5px 5px 5px #d1d1d1;
+    }
+  
+}
