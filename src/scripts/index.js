@@ -5,10 +5,10 @@ document.addEventListener("DOMConteneLoaded", app());
 
 function app() {
   // getStorageData();
-  const [header] = document.body.children;
+  const header = document.querySelector("header");
   const [pinterestBtn, serch, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
-  serch.addEventListener("input", onSerch);
+  serch.addEventListener("input", onSearch);
   selectBtn.addEventListener("click", onSelect);
   renderPinterest();
 }
@@ -38,7 +38,7 @@ function onBtn() {
   renderPinterest();
 }
 
-function onSerch() {
+function onSearch() {
   console.log("1");
 }
 

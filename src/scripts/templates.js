@@ -1,4 +1,3 @@
-
 function createElement(tag, className, text = "") {
   const element = document.createElement(tag);
   const textNode = document.createTextNode(text);
@@ -13,7 +12,6 @@ function createCard({ Image, avatar, Description, id } = post) {
   let cardHeader = createElement("div", "card__header");
   let imgMain = createElement("img", "card__pictures");
   imgMain.setAttribute("src", `${Image}`);
-  imgMain.setAttribute("crossorigin", "");
   let buttonCardTop = createElement("button", "card__button--top", "Сохранить");
   let buttonCardBottom = createElement("button", "card__button--bottom", "...");
   let cardFooter = createElement("div", "card__footer");
