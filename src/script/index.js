@@ -1,18 +1,15 @@
 import {createAddWindow, createСhoiceWindow} from './templates.js';
 import {getStorageData, setStorageData} from './storageApi.js';
-import {renderBoard} from './board'
-
 
 const main = document.querySelector('.main');
 const selectBoard = document.querySelector('select');
-let cardId = 0;
 
 //Create window
 const addWindow = createAddWindow();
 const сhoiceWindow = createСhoiceWindow();
 
 //Function ON
-function onBoardWindow(){
+function onBoardWindow(cardId){
     const target = event.target;
     if(target.id === 'animals-id'){
         let boardData = getStorageData('Animals');
@@ -37,10 +34,10 @@ function onBoardWindow(){
     }
 }
 
-function onСhoiceWindow(event){
+function onСhoiceWindow(cardId){
     const target = event.target;
     if(target.id === 'btn-add'){
-        showAddWindow();
+        showAddWindow(cardId);
     }else if(target.id === 'btn-complaint'){
         showComplaintWindow();
     }else if(target.id === 'btn-close'){
@@ -48,38 +45,20 @@ function onСhoiceWindow(event){
     }
 }
 
-//Show window
-function showChoiceWindow(){
-    main.append(сhoiceWindow);
-}
-
-function showAddWindow(){
-    main.append(addWindow);
-}
-
-function showComplaintWindow(){
-    alert('Делает Маша!');
-}
-
-//Listener
-main.addEventListener('click', (event) => {
+function onCard(event){
     const btnSave = document.querySelectorAll('.card__button--top');
     const btnChoice = document.querySelectorAll('.card__button--bottom');
     const cardHeader = event.target.parentElement;
-    cardId = cardHeader.parentElement.id
+    const cardId = cardHeader.parentElement.id
     for (let save of btnSave){
-        save.onclick =  function(){
-            showAddWindow();
-        }
+        save.addEventListener('click', () => showAddWindow(cardId));
     }
     for (let choice of btnChoice){
-        choice.onclick = function(){
-            showChoiceWindow();
-        }
+        choice.addEventListener('click', () => showChoiceWindow(cardId));
     }
-})
+}
 
-selectBoard.addEventListener('change',(event) =>{
+function onSelectBoard(event){
     const value = event.target.value;
     if (value === 'animals'){
         renderBoard('Animals');
@@ -88,6 +67,32 @@ selectBoard.addEventListener('change',(event) =>{
     }else if(value === 'others'){
         renderBoard('Others');
     }
-})
+}
 
-export {onBoardWindow, onСhoiceWindow}
+//Show window
+function showChoiceWindow(cardId){
+    bindChoiceWindow(сhoiceWindow, cardId);
+    main.append(сhoiceWindow);
+}
+
+function showAddWindow(cardId){
+    bindAddWindow(addWindow, cardId);
+    main.append(addWindow);
+}
+
+function showComplaintWindow(){
+    alert('Делает Маша!');
+}
+
+//Listener
+main.addEventListener('click', onCard);
+
+selectBoard.addEventListener('change',onSelectBoard);
+
+function bindAddWindow(addWindow, cardId){
+    addWindow.addEventListener('click', () => onBoardWindow(cardId));
+}
+
+function bindChoiceWindow(сhoiceWindow, cardId){
+    сhoiceWindow.addEventListener('click', () => onСhoiceWindow(cardId));
+}
