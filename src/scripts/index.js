@@ -10,11 +10,11 @@ function app() {
   pinterestBtn.addEventListener("click", onBtn);
   serch.addEventListener("input", onSerch);
   selectBtn.addEventListener("click", onSelect);
-  renderTodos();
+  renderPinterest();
 }
 
 //Render
-function renderTodos() {
+function renderPinterest() {
   const container = document.querySelector(".container");
   container.innerHTML = "";
   fetch("https://615bec4fc298130017735e20.mockapi.io/posts")
@@ -35,15 +35,17 @@ function renderTodos() {
 }
 //Events Handler
 function onBtn() {
-  renderTodos();
+  renderPinterest();
 }
 
 function onSerch() {
   console.log("1");
 }
+
 function onSelect() {
   console.log("2");
 }
+
 function onCard() {
   console.log("3");
 }
