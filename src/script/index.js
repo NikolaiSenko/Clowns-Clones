@@ -1,15 +1,18 @@
 import {createAddWindow, createСhoiceWindow} from './templates.js';
 import {getStorageData, setStorageData} from './storageApi.js';
+import {renderBoard} from './board'
+
 
 const main = document.querySelector('.main');
 const selectBoard = document.querySelector('select');
+let cardId = 0;
 
 //Create window
 const addWindow = createAddWindow();
 const сhoiceWindow = createСhoiceWindow();
 
 //Function ON
-function onBoardWindow(cardId){
+function onBoardWindow(){
     const target = event.target;
     if(target.id === 'animals-id'){
         let boardData = getStorageData('Animals');
@@ -34,10 +37,10 @@ function onBoardWindow(cardId){
     }
 }
 
-function onСhoiceWindow(cardId){
+function onСhoiceWindow(event){
     const target = event.target;
     if(target.id === 'btn-add'){
-        showAddWindow(cardId);
+        showAddWindow();
     }else if(target.id === 'btn-complaint'){
         showComplaintWindow();
     }else if(target.id === 'btn-close'){
@@ -45,38 +48,12 @@ function onСhoiceWindow(cardId){
     }
 }
 
-function onCard(event){
-    const btnSave = document.querySelectorAll('.card__button--top');
-    const btnChoice = document.querySelectorAll('.card__button--bottom');
-    const cardHeader = event.target.parentElement;
-    const cardId = cardHeader.parentElement.id
-    for (let save of btnSave){
-        save.addEventListener('click', () => showAddWindow(cardId));
-    }
-    for (let choice of btnChoice){
-        choice.addEventListener('click', () => showChoiceWindow(cardId));
-    }
-}
-
-function onSelectBoard(event){
-    const value = event.target.value;
-    if (value === 'animals'){
-        renderBoard('Animals');
-    }else if(value === 'films'){
-        renderBoard('Films');
-    }else if(value === 'others'){
-        renderBoard('Others');
-    }
-}
-
 //Show window
-function showChoiceWindow(cardId){
-    bindChoiceWindow(сhoiceWindow, cardId);
+function showChoiceWindow(){
     main.append(сhoiceWindow);
 }
 
-function showAddWindow(cardId){
-    bindAddWindow(addWindow, cardId);
+function showAddWindow(){
     main.append(addWindow);
 }
 
@@ -85,14 +62,32 @@ function showComplaintWindow(){
 }
 
 //Listener
-main.addEventListener('click', onCard);
+main.addEventListener('click', (event) => {
+    const btnSave = document.querySelectorAll('.card__button--top');
+    const btnChoice = document.querySelectorAll('.card__button--bottom');
+    const cardHeader = event.target.parentElement;
+    cardId = cardHeader.parentElement.id
+    for (let save of btnSave){
+        save.onclick =  function(){
+            showAddWindow();
+        }
+    }
+    for (let choice of btnChoice){
+        choice.onclick = function(){
+            showChoiceWindow();
+        }
+    }
+})
 
-selectBoard.addEventListener('change',onSelectBoard);
+selectBoard.addEventListener('change',(event) =>{
+    const value = event.target.value;
+    if (value === 'animals'){
+        renderBoard('Animals');
+    }else if(value === 'films'){
+        renderBoard('Films');
+    }else if(value === 'others'){
+        renderBoard('Others');
+    }
+})
 
-function bindAddWindow(addWindow, cardId){
-    addWindow.addEventListener('click', () => onBoardWindow(cardId));
-}
-
-function bindChoiceWindow(сhoiceWindow, cardId){
-    сhoiceWindow.addEventListener('click', () => onСhoiceWindow(cardId));
-}
+export {onBoardWindow, onСhoiceWindow}
