@@ -2,6 +2,7 @@
   margin-top: 1rem;
   &__header {
     position: relative;
+    max-width: min-content;
     background-color: black;
     border-radius: 1rem;
     &:hover .card__pictures {
@@ -24,6 +25,7 @@
   }
   &__footer {
     display: flex;
+    max-width: 12rem;
   }
   &__avatars {
     width: 2.5rem;
