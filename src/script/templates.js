@@ -1,3 +1,6 @@
+import {onBoardWindow, onСhoiceWindow} from './index.js'
+import {changeBoard} from './board.js'
+
 function createHeaderBoard(board){
     const headerBoard = createElement('div');
     const header = createElement('header', 'header');
@@ -30,6 +33,7 @@ function createAddWindow(){
     const btnClose = createElement('button', 'btn-close', 'Отмена');
     btnClose.id = 'btn-close';
     modalAdd.append(firstBoard, secondBoard, thirdBoard, btnClose);
+    modalAdd.addEventListener('click', onBoardWindow);
     windowAdd.append(modalAdd);
     return windowAdd;
 }
@@ -44,6 +48,7 @@ function createСhoiceWindow(){
     const btnClose = createElement('button', 'btn-close', 'Отмена');
     btnClose.id = 'btn-close'
     modalSelection.append(btnAdd, btnСomplaint, btnClose);
+    modalSelection.addEventListener('click', onСhoiceWindow);
     modalChoice.append(modalSelection);
 
     return modalChoice;
