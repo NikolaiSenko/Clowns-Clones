@@ -1,9 +1,6 @@
 function getStorageData(board){
     const boardData = JSON.parse(localStorage.getItem(board));
-    if(boardData){
-        return boardData;
-    }
-    return [];
+    return boardData ??= [];
 }
 
 function setStorageData(boardIndex, boardData){
