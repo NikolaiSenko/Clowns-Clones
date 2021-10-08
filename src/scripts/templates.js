@@ -1,4 +1,3 @@
-
 function createElement(tag, className, text = "") {
   const element = document.createElement(tag);
   const textNode = document.createTextNode(text);
