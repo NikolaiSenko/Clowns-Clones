@@ -18,7 +18,7 @@ function app() {
 function renderPinterest() {
   const container = document.querySelector(".container");
   const heroBoard = document.querySelector(".hero-board");
-  if (heroBoard !== null){
+  if (heroBoard !== null) {
     heroBoard.remove();
   }
   container.innerHTML = "";
@@ -50,26 +50,26 @@ function onSearch() {
 
 function onSelect(event) {
   const value = event.target.value;
-  if (value === 'animals'){
-      renderBoard('Animals');
-  }else if(value === 'films'){
-      renderBoard('Films');
-  }else if(value === 'others'){
-      renderBoard('Others');
+  if (value === "animals") {
+    renderBoard("Animals");
+  } else if (value === "films") {
+    renderBoard("Films");
+  } else if (value === "others") {
+    renderBoard("Others");
   }
 }
 
 function onCard(board) {
-  const target = event.target
+  const target = event.target;
   const cardHeader = target.parentElement;
   const cardId = cardHeader.parentElement.id;
-  if (target.className === 'card__button--top'){
-    if(target.innerHTML === 'Сохранить'){
+  if (target.className === "card__button--top") {
+    if (target.innerHTML === "Сохранить") {
       showAddWindow(cardId);
-    }else if(target.innerHTML === 'Удалить'){
+    } else if (target.innerHTML === "Удалить") {
       deleteCard(board, cardId);
     }
-  }else if (target.className === 'card__button--bottom'){
+  } else if (target.className === "card__button--bottom") {
     showChoiceWindow(cardId);
   }
 }
