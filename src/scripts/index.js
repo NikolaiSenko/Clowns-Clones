@@ -3,7 +3,7 @@ import { createCard } from "./templates.js";
 import { renderBoard, deleteCard } from "./board.js";
 import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
 
-document.addEventListener("DOMConteneLoaded", app());
+document.addEventListener("DOMContentLoaded", app);
 
 function app() {
   let preloader = document.getElementById("preloader");
@@ -31,9 +31,9 @@ function renderPinterest() {
     .then((response) => response.json())
     .then((response) => response.sort(() => Math.random() - 0.5))
     .then((response) => {
-      let masCard = [];
-      response.forEach((post) => masCard.push(createCard(post)));
-      return masCard;
+      let massCard = [];
+      response.forEach((post) => massCard.push(createCard(post)));
+      return massCard;
     })
     .then((massCard) => {
       massCard.forEach((card) => {
@@ -96,16 +96,16 @@ function onSelect(event) {
 }
 
 function onCard(board) {
-  const target = event.target;
+  const target = event.target
   const cardHeader = target.parentElement;
   const cardId = cardHeader.parentElement.id;
-  if (target.className === "card__button--top") {
-    if (target.innerHTML === "Сохранить") {
+  if (target.className === 'card__button--top'){
+    if(target.innerHTML === 'Сохранить'){
       showAddWindow(cardId);
-    } else if (target.innerHTML === "Удалить") {
+    }else if(target.innerHTML === 'Удалить'){
       deleteCard(board, cardId);
     }
-  } else if (target.className === "card__button--bottom") {
+  }else if (target.className === 'card__button--bottom'){
     showChoiceWindow(cardId);
   }
 }

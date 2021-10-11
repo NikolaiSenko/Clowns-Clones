@@ -1,40 +1,37 @@
-import { createCard, createElement } from "./templates.js";
-import { getStorageData, setStorageData } from "./storageApi.js";
+import { createCard, createElement } from './templates.js';
+import { getStorageData, setStorageData } from './storageApi.js';
 import { getMasonry } from "./masonry.js";
 import { onCard } from "./index.js";
 
 //Render
-function renderBoard(board) {
-  const main = document.querySelector("main");
-  main.innerHTML = "";
-  const headerBoard = createElement("section", "hero-board", board);
-  const container = createElement("div", "container");
-  main.append(headerBoard, container);
-  renderBoardContent(board);
+function renderBoard(board){
+  const boardData = getStorageData(board);
+    const main = document.querySelector("main");
+    main.innerHTML = '';
+    const headerBoard = createElement('section', 'hero-board', board);
+    const container = createElement('div', 'container');
+    container.innerHTML = '';
+        fetch(`https://615bec4fc298130017735e20.mockapi.io/posts/`)
+        .then((response) => response.json())
+        .then(response => response.forEach(post => {
+           for (let i = 0; i < boardData.length; ++i){
+             if (post.id === boardData[i]){
+              const card = createCard(post);
+                card.addEventListener("click", () => onCard(board));
+                container.append(card);
+                getMasonry();
+             }
+           }
+        }))
+    main.append(headerBoard, container);
 }
 
-function renderBoardContent(board) {
-  let boardData = getStorageData(board);
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
-  boardData.forEach((id) => {
-    fetch(`https://615bec4fc298130017735e20.mockapi.io/posts/${id}`)
-      .then((response) => response.json())
-      .then((response) => {
-        const card = createCard(response);
-        card.addEventListener("click", () => onCard(board));
-        container.append(card);
-        getMasonry();
-      });
-  });
-}
-
-function deleteCard(board, cardId) {
-  let boardData = getStorageData(board);
-  let index = boardData.indexOf(cardId);
-  boardData.splice(index, 1);
-  setStorageData(board, boardData);
-  renderBoardContent(board);
+function deleteCard(board, cardId){
+    let boardData = getStorageData(board);
+    let index = boardData.indexOf(cardId);
+    boardData.splice(index,1);
+    setStorageData(board, boardData);
+    renderBoardContent(board);
 }
 
 export { renderBoard, deleteCard };
