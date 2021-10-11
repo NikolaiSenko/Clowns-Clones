@@ -3,7 +3,7 @@ import { createCard } from "./templates.js";
 import { renderBoard, deleteCard } from "./board.js";
 import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
 
-document.addEventListener("DOMConteneLoaded", app());
+document.addEventListener("DOMContentLoaded", app);
 
 function app() {
   const header = document.querySelector("header");
@@ -26,9 +26,9 @@ function renderPinterest() {
     .then((response) => response.json())
     .then((response) => response.sort(() => Math.random() - 0.5))
     .then((response) => {
-      let masCard = [];
-      response.forEach((post) => masCard.push(createCard(post)));
-      return masCard;
+      let massCard = [];
+      response.forEach((post) => massCard.push(createCard(post)));
+      return massCard;
     })
     .then((massCard) => {
       massCard.forEach((card) => {

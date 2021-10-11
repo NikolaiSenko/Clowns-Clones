@@ -11,22 +11,21 @@ const сhoiceWindow = createСhoiceWindow();
 function onBoardWindow(cardId){
     const target = event.target;
     if(target.id === 'animals-id'){
-        let boardData = getStorageData('Animals');
+        const boardData = getStorageData('Animals');
         boardData.push(cardId);
         setStorageData('Animals', boardData);
-        alert('Сохранено на доску Animals');
         addWindow.remove();
+        alert('Сохранено на доску Animals');
     }else if(target.id === 'films-id'){
-        let boardData = getStorageData('Films');
+        const boardData = getStorageData('Films');
         boardData.push(cardId);
         setStorageData('Films', boardData);
-        alert('Сохранено на доску Films');
         addWindow.remove();
+        alert('Сохранено на доску Films');
     }else if(target.id === 'others-id'){
         let boardData = getStorageData('Others');
         boardData.push(cardId);
         setStorageData('Others', boardData);
-        console.log(cardId);
         alert('Сохранено на доску Others');
         addWindow.remove();
     }else if(target.id === 'btn-close'){
@@ -39,7 +38,7 @@ function onСhoiceWindow(cardId){
     if(target.id === 'btn-add'){
         showAddWindow(cardId);
     }else if(target.id === 'btn-complaint'){
-        showComplaintWindow();
+       alert('в разработке')
     }else if(target.id === 'btn-close'){
         сhoiceWindow.remove();
     }
@@ -47,26 +46,14 @@ function onСhoiceWindow(cardId){
 
 //Show window
 function showChoiceWindow(cardId){
-    bindChoiceWindow(сhoiceWindow, cardId);
+  сhoiceWindow.addEventListener('click', () => onСhoiceWindow(cardId));
     main.append(сhoiceWindow);
 }
 
 function showAddWindow(cardId){
-    bindAddWindow(addWindow, cardId);
+    addWindow.addEventListener('click', () => onBoardWindow(cardId));
     main.append(addWindow);
 }
 
-function showComplaintWindow(){
-    alert('Делает Маша!');
-}
-
-//Listeners
-function bindAddWindow(addWindow, cardId){
-    addWindow.addEventListener('click', () => onBoardWindow(cardId));
-}
-
-function bindChoiceWindow(сhoiceWindow, cardId){
-    сhoiceWindow.addEventListener('click', () => onСhoiceWindow(cardId));
-}
 
 export { showAddWindow, showChoiceWindow };
