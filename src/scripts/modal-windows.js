@@ -1,18 +1,14 @@
-import {createAddWindow, createСhoiceWindow} from './templates.js';
-import {getStorageData, setStorageData} from './storageApi.js';
-import {renderBoard} from './board'
-
+import { createAddWindow, createСhoiceWindow } from './templates.js';
+import { getStorageData, setStorageData } from './storageApi.js';
 
 const main = document.querySelector('.main');
-const selectBoard = document.querySelector('select');
-let cardId = 0;
 
 //Create window
 const addWindow = createAddWindow();
 const сhoiceWindow = createСhoiceWindow();
 
 //Function ON
-function onBoardWindow(){
+function onBoardWindow(cardId){
     const target = event.target;
     if(target.id === 'animals-id'){
         let boardData = getStorageData('Animals');
@@ -30,6 +26,7 @@ function onBoardWindow(){
         let boardData = getStorageData('Others');
         boardData.push(cardId);
         setStorageData('Others', boardData);
+        console.log(cardId);
         alert('Сохранено на доску Others');
         addWindow.remove();
     }else if(target.id === 'btn-close'){
@@ -37,10 +34,10 @@ function onBoardWindow(){
     }
 }
 
-function onСhoiceWindow(event){
+function onСhoiceWindow(cardId){
     const target = event.target;
     if(target.id === 'btn-add'){
-        showAddWindow();
+        showAddWindow(cardId);
     }else if(target.id === 'btn-complaint'){
         showComplaintWindow();
     }else if(target.id === 'btn-close'){
@@ -49,11 +46,13 @@ function onСhoiceWindow(event){
 }
 
 //Show window
-function showChoiceWindow(){
+function showChoiceWindow(cardId){
+    bindChoiceWindow(сhoiceWindow, cardId);
     main.append(сhoiceWindow);
 }
 
-function showAddWindow(){
+function showAddWindow(cardId){
+    bindAddWindow(addWindow, cardId);
     main.append(addWindow);
 }
 
@@ -61,33 +60,13 @@ function showComplaintWindow(){
     alert('Делает Маша!');
 }
 
-//Listener
-main.addEventListener('click', (event) => {
-    const btnSave = document.querySelectorAll('.card__button--top');
-    const btnChoice = document.querySelectorAll('.card__button--bottom');
-    const cardHeader = event.target.parentElement;
-    cardId = cardHeader.parentElement.id
-    for (let save of btnSave){
-        save.onclick =  function(){
-            showAddWindow();
-        }
-    }
-    for (let choice of btnChoice){
-        choice.onclick = function(){
-            showChoiceWindow();
-        }
-    }
-})
+//Listeners
+function bindAddWindow(addWindow, cardId){
+    addWindow.addEventListener('click', () => onBoardWindow(cardId));
+}
 
-selectBoard.addEventListener('change',(event) =>{
-    const value = event.target.value;
-    if (value === 'animals'){
-        renderBoard('Animals');
-    }else if(value === 'films'){
-        renderBoard('Films');
-    }else if(value === 'others'){
-        renderBoard('Others');
-    }
-})
+function bindChoiceWindow(сhoiceWindow, cardId){
+    сhoiceWindow.addEventListener('click', () => onСhoiceWindow(cardId));
+}
 
-export {onBoardWindow, onСhoiceWindow}
+export { showAddWindow, showChoiceWindow };

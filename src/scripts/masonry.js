@@ -1,3 +1,6 @@
+import Masonry from "masonry-layout";
+import imagesLoaded from "imagesloaded";
+
 function getMasonry() {
   imagesLoaded(document.querySelector(".container"), () => {
     let container = document.querySelector(".container");
