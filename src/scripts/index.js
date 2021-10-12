@@ -41,7 +41,7 @@ function renderPinterest() {
 
 //Events Handler
 function onBtn() {
-  renderPinterest();
+  location.reload();
 }
 
 function onSearch() {
