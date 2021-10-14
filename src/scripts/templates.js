@@ -6,13 +6,13 @@ function createElement(tag, className, text = "") {
   return element;
 }
 
-function createCard({ Image, avatar, Description, id } = post) {
+function createCard({ image, avatar, description, id } = post) {
   const heroBoard = document.querySelector(".hero-board");
   let card = createElement("div", "card");
   card.id = `${id}`;
   let cardHeader = createElement("div", "card__header");
   let imgMain = createElement("img", "card__pictures");
-  imgMain.src = Image;
+  imgMain.src = image;
   imgMain.setAttribute("crossorigin", "");
   let buttonCardTop = createElement("button", "card__button--top");
   if (heroBoard !== null) {
@@ -24,7 +24,7 @@ function createCard({ Image, avatar, Description, id } = post) {
   let cardFooter = createElement("div", "card__footer");
   let imgAvatars = createElement("img", "card__avatars");
   imgAvatars.src = avatar;
-  let descriptions = createElement("p", "card__descriptions", `${Description}`);
+  let descriptions = createElement("p", "card__descriptions", `${description}`);
   cardHeader.append(imgMain, buttonCardTop, buttonCardBottom);
   cardFooter.append(imgAvatars, descriptions);
   card.append(cardHeader, cardFooter);

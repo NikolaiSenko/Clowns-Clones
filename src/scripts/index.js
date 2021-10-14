@@ -1,16 +1,16 @@
-import { getMasonry } from "./masonry.js";
+import { initMasonry } from "./masonry.js";
 import { createCard } from "./templates.js";
 import { renderBoard, deleteCard } from "./board.js";
 import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
 
-document.addEventListener("DOMConteneLoaded", app());
+document.addEventListener("DOMContentLoaded", app);
 
 function app() {
   let preloader = document.getElementById("preloader");
   preloader.classList.add("hide-preloader");
   setInterval(() => {
     preloader.classList.add("preloader-hidden");
-  }, 1500);
+  }, 2000);
   const header = document.querySelector("header");
   const [pinterestBtn, serch, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
@@ -40,7 +40,7 @@ function renderPinterest() {
         card.addEventListener("click", onCard);
         container.append(card);
       });
-      getMasonry();
+      initMasonry();
     });
 }
 
@@ -51,29 +51,22 @@ function onBtn() {
 
 function onSearch(e) {
   const input = e.target.value;
+  console.log(input.split("#"));
   const container = document.querySelector(".container");
   container.innerHTML = "";
   fetch("https://615bec4fc298130017735e20.mockapi.io/posts")
     .then((response) => response.json())
     .then((response) => response.sort(() => Math.random() - 0.5))
     .then((response) => {
-      let searhHashTag = {
-        value: `${input}`,
-        canJoin(respons) {
-          let mas = respons.Description.split("#");
-          console.log(mas);
-          let flag = false;
-          for (let mass of mas) {
-            if (mass === this.value) {
-              flag = true;
-            }
-          }
-          if (flag) return respons;
-        },
-      };
       let masCard = [];
-      let soldiers = response.filter(searhHashTag.canJoin, searhHashTag);
-      soldiers.forEach((post) => masCard.push(createCard(post)));
+      response.forEach((el) => {
+        const mas = el.description
+          .split("#")
+          .filter((value) => input.split("#").includes(value));
+        return el;
+      });
+      masCard.push(mas);
+      console.log(masCard);
       return masCard;
     })
     .then((massCard) => {
@@ -81,9 +74,10 @@ function onSearch(e) {
         card.addEventListener("click", onCard);
         container.append(card);
       });
-      getMasonry();
+      initMasonry();
     });
 }
+
 function onSelect(event) {
   const value = event.target.value;
   if (value === "animals") {
