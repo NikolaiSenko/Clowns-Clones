@@ -1,6 +1,9 @@
-function getMasonry() {
-  imagesLoaded(document.querySelector(".container"), () => {
-    const container = document.querySelector(".container");
+import Masonry from "masonry-layout";
+import imagesLoaded from "imagesloaded";
+
+function initMasonry() {
+  const container = document.querySelector(".container");
+  imagesLoaded(container, () => {
     const masonry = new Masonry(container, {
       gutter: 10,
       itemSelector: ".card",
@@ -9,4 +12,4 @@ function getMasonry() {
   });
 }
 
-export { getMasonry };
+export { initMasonry };

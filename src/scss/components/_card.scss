@@ -5,6 +5,10 @@
     max-width: min-content;
     background-color: black;
     border-radius: 1rem;
+    transition: 1s;
+    &:hover {
+      transform: scale(1.04);
+    }
     &:hover .card__pictures {
       opacity: 0.5;
       transition: 0.5s;
@@ -20,22 +24,24 @@
   }
   &__pictures {
     max-width: 15rem;
-    border: white;
+    transition: 0.8s opacity;
+    border: $white;
     border-radius: 1rem;
   }
+
   &__footer {
     display: flex;
-    max-width: 12rem;
   }
   &__avatars {
     width: 2.5rem;
     height: 2.5rem;
-    border: 0.5rem solid white;
+    border: 0.5rem solid $white;
     border-radius: 2rem;
   }
   &__descriptions {
-    margin-left: 0.5rem;
     align-self: center;
+    word-break: break-all;
+    max-width: 10rem;
   }
   &__button--top {
     position: absolute;
@@ -46,7 +52,7 @@
     opacity: 0;
     border-radius: 3rem;
     border: none;
-    color: white;
+    color: $white;
     background-color: red;
   }
   &__button--bottom {
@@ -58,6 +64,9 @@
     border-radius: 3rem;
     border: none;
     color: black;
-    background-color: white;
+    background-color: $white;
+    &:after {
+      content: "\2022\2022\2022";
+    }
   }
 }

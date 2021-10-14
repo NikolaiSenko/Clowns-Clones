@@ -44,14 +44,14 @@ function onBoardWindow(cardId) {
 
 function onСhoiceWindow(cardId) {
   const choiceWindow = document.querySelector(".background-window");
-  console.log(choiceWindow)
+  console.log(choiceWindow);
   const target = event.target;
   if (target.id === "btn-add") {
     showAddWindow(cardId);
     choiceWindow.remove();
   } else if (target.id === "btn-complaint") {
-    deleteCard(cardId)
-    choiceWindow.remove()
+    deleteCard(cardId);
+    choiceWindow.remove();
   } else if (target.id === "btn-close") {
     choiceWindow.remove();
   }

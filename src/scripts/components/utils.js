@@ -1,7 +1,7 @@
-import {getMasonry} from "./masonry.js"
+import { initMasonry } from "./masonry.js";
 function deleteCard(cardId) {
   const card = document.getElementById(cardId);
   card.remove();
-  getMasonry();
+  initMasonry();
 }
-export {deleteCard}
+export { deleteCard };

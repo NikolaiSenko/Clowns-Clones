@@ -1,6 +1,6 @@
 import { createCard, createElement } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
-import { getMasonry } from "./masonry.js";
+import { initMasonry } from "./masonry.js";
 import { onCard } from "../index.js";
 
 //Render
@@ -19,7 +19,7 @@ function renderBoard(board) {
             const card = createCard(post);
             card.addEventListener("click", () => onCard(board));
             container.append(card);
-            getMasonry();
+            initMasonry();
           }
         }
       })
