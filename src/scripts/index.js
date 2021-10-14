@@ -76,9 +76,7 @@ function onSearch(e) {
 
 function onSelect(event) {
   const value = event.target.value;
-  if (value === "select") {
-    location.reload();
-  } else if (value === "animals") {
+  if (value === "animals") {
     renderBoard("Animals");
   } else if (value === "films") {
     renderBoard("Films");
