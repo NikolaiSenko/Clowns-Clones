@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { initMasonry } from "./masonry.js";
 import { createCard } from "./templates.js";
 import { renderBoard, deleteCard } from "./board.js";
 import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
+=======
+import { getMasonry } from "./components/masonry.js";
+import { createCard } from "./components/templates.js";
+import { renderBoard, deleteBoardCard } from "./components/board.js";
+import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
+>>>>>>> pinterest-dev
 
 document.addEventListener("DOMContentLoaded", app);
 
@@ -99,7 +106,7 @@ function onCard(board) {
     if (target.innerHTML === "Сохранить") {
       showAddWindow(cardId);
     } else if (target.innerHTML === "Удалить") {
-      deleteCard(board, cardId);
+      deleteBoardCard(board, cardId);
     }
   } else if (target.className === "card__button--bottom") {
     showChoiceWindow(cardId);
