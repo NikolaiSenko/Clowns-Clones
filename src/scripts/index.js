@@ -6,22 +6,21 @@ import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
 document.addEventListener("DOMContentLoaded", app);
 
 function app() {
-
-  let preloader = document.getElementById("preloader");
-  preloader.classList.add("hide-preloader");
-  setInterval(() => {
-    preloader.classList.add("preloader-hidden");
-  }, 2000);
   const header = document.querySelector("header");
   const [pinterestBtn, serch, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
-  serch.addEventListener("input", onSearch);
+  serch.addEventListener("change", onSearch);
   selectBtn.addEventListener("change", onSelect);
   renderPinterest();
 }
 
 //Render
 function renderPinterest() {
+  let preloader = document.getElementById("preloader");
+  preloader.classList.add("hide-preloader");
+  setInterval(() => {
+    preloader.classList.add("preloader-hidden");
+  }, 1000);
   const container = document.querySelector(".container");
   const heroBoard = document.querySelector(".hero-board");
   if (heroBoard !== null) {
@@ -77,8 +76,7 @@ function onSearch(e) {
       });
       initMasonry();
     });
-
-
+}
 
 function onSelect(event) {
   const value = event.target.value;
