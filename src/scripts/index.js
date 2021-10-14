@@ -20,7 +20,7 @@ function renderPinterest() {
   preloader.classList.add("hide-preloader");
   setInterval(() => {
     preloader.classList.add("preloader-hidden");
-  }, 1000);
+  }, 1500);
   const container = document.querySelector(".container");
   const heroBoard = document.querySelector(".hero-board");
   if (heroBoard !== null) {
