@@ -7,41 +7,41 @@ document.addEventListener("DOMContentLoaded", app);
 
 function app() {
   const header = document.querySelector("header");
-  const [pinterestBtn, serch, selectBtn] = header.children;
+  const [pinterestBtn, search, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
-  serch.addEventListener("change", onSearch);
+  search.addEventListener("change", onSearch);
   selectBtn.addEventListener("change", onSelect);
+  showPreloader();
   renderPinterest();
 }
 
-//Render
-function renderPinterest() {
+//Preloader
+function showPreloader() {
   let preloader = document.getElementById("preloader");
   preloader.classList.add("hide-preloader");
   setInterval(() => {
     preloader.classList.add("preloader-hidden");
   }, 1500);
-  const container = document.querySelector(".container");
-  const heroBoard = document.querySelector(".hero-board");
-  if (heroBoard !== null) {
-    heroBoard.remove();
-  }
-  container.innerHTML = "";
+}
+
+//Render
+function renderPinterest() {
+  getCards((massCards) => {
+    const container = document.querySelector(".container");
+    massCards.forEach((card) => {
+      let createdCard = createCard(card);
+      createdCard.addEventListener("click", onCard);
+      container.append(createdCard);
+    });
+    initMasonry();
+  });
+}
+
+function getCards(additionalMethod) {
   fetch("https://615bec4fc298130017735e20.mockapi.io/posts")
     .then((response) => response.json())
-    .then((response) => response.sort(() => Math.random() - 0.5))
-    .then((response) => {
-      let massCard = [];
-      response.forEach((post) => massCard.push(createCard(post)));
-      return massCard;
-    })
-    .then((massCard) => {
-      massCard.forEach((card) => {
-        card.addEventListener("click", onCard);
-        container.append(card);
-      });
-      initMasonry();
-    });
+    .then((cards) => cards.sort(() => Math.random() - 0.5))
+    .then((randomCards) => additionalMethod(randomCards));
 }
 
 //Events Handler
@@ -51,31 +51,33 @@ function onBtn() {
 
 function onSearch(e) {
   const input = e.target.value;
-  console.log(input.split("#"));
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
-  fetch("https://615bec4fc298130017735e20.mockapi.io/posts")
-    .then((response) => response.json())
-    .then((response) => response.sort(() => Math.random() - 0.5))
-    .then((response) => {
-      let masCard = [];
-      response.forEach((el) => {
-        const mas = el.description
+  if (input.length === 0) {
+    renderPinterest();
+  } else {
+    getCards((randomObjects) => {
+      const container = document.querySelector(".container");
+      container.innerHTML = "";
+      const filteredCards = randomObjects.filter((el) => {
+        let intersect = el.description
+          .toLowerCase()
           .split("#")
-          .filter((value) => input.split("#").includes(value));
-        return el;
+          .filter((value) =>
+            input
+              .toLowerCase()
+              .split("#")
+              .filter((e) => e !== "")
+              .includes(value)
+          );
+        return intersect.length;
       });
-      masCard.push(mas);
-      console.log(masCard);
-      return masCard;
-    })
-    .then((massCard) => {
-      massCard.forEach((card) => {
-        card.addEventListener("click", onCard);
-        container.append(card);
+      filteredCards.forEach((card) => {
+        let createdCard = createCard(card);
+        createdCard.addEventListener("click", onCard);
+        container.append(createdCard);
       });
       initMasonry();
     });
+  }
 }
 
 function onSelect(event) {
