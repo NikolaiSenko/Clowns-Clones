@@ -1,7 +1,7 @@
 import { createCard, createElement } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { getMasonry } from "./masonry.js";
-import { onCard } from "./index.js";
+import { onCard } from "../index.js";
 
 //Render
 function renderBoard(board) {
@@ -28,7 +28,7 @@ function renderBoard(board) {
   main.append(headerBoard, container);
 }
 
-function deleteCard(board, cardId) {
+function deleteBoardCard(board, cardId) {
   let boardData = getStorageData(board);
   let index = boardData.indexOf(cardId);
   boardData.splice(index, 1);
@@ -36,4 +36,4 @@ function deleteCard(board, cardId) {
   renderBoard(board);
 }
 
-export { renderBoard, deleteCard };
+export { renderBoard, deleteBoardCard };
