@@ -64,11 +64,18 @@ function onSearch(e) {
           );
         return intersect.length;
       });
-      filteredCards.forEach((card) => {
-        let createdCard = createCard(card);
-        createdCard.addEventListener("click", onCard);
-        container.append(createdCard);
-      });
+      if (filteredCards.length !== 0) {
+        filteredCards.forEach((card) => {
+          let createdCard = createCard(card);
+          createdCard.addEventListener("click", onCard);
+          container.append(createdCard);
+        });
+      } else {
+        const nothingFound = document.createElement("h2");
+        nothingFound.innerHTML =
+          "На нашем христианском сервер,ничего не найдено!!!";
+        container.append(nothingFound);
+      }
       initMasonry();
     });
   }

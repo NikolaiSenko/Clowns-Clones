@@ -24,7 +24,7 @@ function createCard({ image, avatar, description, id } = post) {
   let cardFooter = createElement("div", "card__footer");
   let imgAvatars = createElement("img", "card__avatars");
   imgAvatars.src = avatar;
-  let descriptions = createElement("p", "card__descriptions", `${description}`);
+  let descriptions = createElement("p", "card__descriptions", description);
   cardHeader.append(imgMain, buttonCardTop, buttonCardBottom);
   cardFooter.append(imgAvatars, descriptions);
   card.append(cardHeader, cardFooter);

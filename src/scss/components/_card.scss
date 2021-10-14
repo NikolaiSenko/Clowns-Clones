@@ -25,7 +25,7 @@
   &__pictures {
     max-width: 15rem;
     transition: 0.8s opacity;
-    border: white;
+    border: $white;
     border-radius: 1rem;
   }
 
@@ -35,7 +35,7 @@
   &__avatars {
     width: 2.5rem;
     height: 2.5rem;
-    border: 0.5rem solid white;
+    border: 0.5rem solid $white;
     border-radius: 2rem;
   }
   &__descriptions {
@@ -52,7 +52,7 @@
     opacity: 0;
     border-radius: 3rem;
     border: none;
-    color: white;
+    color: $white;
     background-color: red;
   }
   &__button--bottom {
@@ -64,7 +64,7 @@
     border-radius: 3rem;
     border: none;
     color: black;
-    background-color: white;
+    background-color: $white;
     &:after {
       content: "\2022\2022\2022";
     }
