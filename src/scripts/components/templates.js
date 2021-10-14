@@ -8,23 +8,23 @@ function createElement(tag, className, text = "") {
 
 function createCard({ image, avatar, description, id } = post) {
   const heroBoard = document.querySelector(".hero-board");
-  let card = createElement("div", "card");
+  const card = createElement("div", "card");
   card.id = id;
-  let cardHeader = createElement("div", "card__header");
-  let imgMain = createElement("img", "card__pictures");
+  const cardHeader = createElement("div", "card__header");
+  const imgMain = createElement("img", "card__pictures");
   imgMain.src = image;
   imgMain.setAttribute("crossorigin", "");
-  let buttonCardTop = createElement("button", "card__button--top");
+  const buttonCardTop = createElement("button", "card__button--top");
   if (heroBoard !== null) {
     buttonCardTop.innerHTML = "Удалить";
   } else {
     buttonCardTop.innerHTML = "Сохранить";
   }
-  let buttonCardBottom = createElement("button", "card__button--bottom", "...");
-  let cardFooter = createElement("div", "card__footer");
-  let imgAvatars = createElement("img", "card__avatars");
+  const buttonCardBottom = createElement("button", "card__button--bottom", "...");
+  const cardFooter = createElement("div", "card__footer");
+  const imgAvatars = createElement("img", "card__avatars");
   imgAvatars.src = avatar;
-  let descriptions = createElement("p", "card__descriptions", description);
+  const descriptions = createElement("p", "card__descriptions", description);
   cardHeader.append(imgMain, buttonCardTop, buttonCardBottom);
   cardFooter.append(imgAvatars, descriptions);
   card.append(cardHeader, cardFooter);

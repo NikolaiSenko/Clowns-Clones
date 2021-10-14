@@ -1,36 +1,38 @@
 import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { deleteCard } from "./utils.js";
+import { WEBSTORAGECONFIG } from "./config.js"
 
-const main = document.querySelector(".main");
 
 //Function ON
 function onBoardWindow(cardId) {
   const target = event.target;
   const addWindow = document.querySelector(".background-window");
-  if (target.id === "animals-id") {
-    const boardData = getStorageData("Animals");
-    boardData.push(cardId);
-    setStorageData("Animals", boardData);
-    addWindow.remove();
-    deleteCard(cardId);
-    alert("Сохранено на доску Animals");
-  } else if (target.id === "films-id") {
-    const boardData = getStorageData("Films");
-    boardData.push(cardId);
-    setStorageData("Films", boardData);
-    addWindow.remove();
-    deleteCard(cardId);    
-    alert("Сохранено на доску Films");
-  } else if (target.id === "others-id") {
-    let boardData = getStorageData("Others");
-    boardData.push(cardId);
-    setStorageData("Others", boardData);
-    alert("Сохранено на доску Others");
-    addWindow.remove();
-    deleteCard(cardId);
-  } else if (target.id === "btn-close") {
-    addWindow.remove();
+  switch (target.id) {
+    case "animals-id":
+      const boardDataAnimals = getStorageData(WEBSTORAGECONFIG.typeAnimals);
+      boardDataAnimals.push(cardId);
+      setStorageData(WEBSTORAGECONFIG.typeAnimals, boardDataAnimals);
+      addWindow.remove();
+      alert("Сохранено на доску Animals");
+      break;
+    case "films-id":
+      const boardDataFilms = getStorageData(WEBSTORAGECONFIG.typeFilms);
+      boardDataFilms.push(cardId);
+      setStorageData(WEBSTORAGECONFIG.typeFilms, boardDataFilms);
+      addWindow.remove();
+      alert("Сохранено на доску Films");
+      break;
+    case "others-id":
+      const boardDataOthers = getStorageData(WEBSTORAGECONFIG.typeOthers);
+      boardDataOthers.push(cardId);
+      setStorageData(WEBSTORAGECONFIG.typeOthers, boardDataOthers);
+      addWindow.remove();
+      alert("Сохранено на доску Others");
+      break;
+    case "btn-close":
+      addWindow.remove();
+      break;
   }
 }
 
@@ -50,13 +52,13 @@ function onСhoiceWindow(cardId) {
 }
 
 //Show window
-function showChoiceWindow(cardId) {
+function showChoiceWindow(main, cardId) {
   const сhoiceWindow = createСhoiceWindow();
   сhoiceWindow.addEventListener("click", () => onСhoiceWindow(cardId));
   main.append(сhoiceWindow);
 }
 
-function showAddWindow(cardId) {
+function showAddWindow(main, cardId) {
   const addWindow = createAddWindow();
   addWindow.addEventListener("click", () => onBoardWindow(cardId));
   main.append(addWindow);

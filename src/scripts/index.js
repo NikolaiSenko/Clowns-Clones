@@ -3,24 +3,22 @@ import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 
-document.addEventListener("DOMContentLoaded", app);
+const main = document.getElementById('main');
+document.addEventListener("DOMContentLoaded", () => app(main));
 
-function app() {
+
+function app(main) {
   const header = document.querySelector("header");
   const [pinterestBtn, serch, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
   serch.addEventListener("input", onSearch);
-  selectBtn.addEventListener("change", onSelect);
+  selectBtn.addEventListener("change", () => onSelect(main));
   renderPinterest();
 }
 
 //Render
 function renderPinterest() {
   const container = document.querySelector(".container");
-  const heroBoard = document.querySelector(".hero-board");
-  if (heroBoard !== null) {
-    heroBoard.remove();
-  }
   container.innerHTML = "";
   fetch("https://615bec4fc298130017735e20.mockapi.io/posts")
     .then((response) => response.json())
@@ -48,29 +46,29 @@ function onSearch() {
   console.log("Делает Леша");
 }
 
-function onSelect(event) {
+function onSelect(main) {
   const value = event.target.value;
   if (value === "animals") {
-    renderBoard("Animals");
+    renderBoard(main, "Animals");
   } else if (value === "films") {
-    renderBoard("Films");
+    renderBoard(main, "Films");
   } else if (value === "others") {
-    renderBoard("Others");
+    renderBoard(main, "Others");
   }
 }
 
-function onCard(board) {
+function onCard(main, board) {
   const target = event.target;
   const cardHeader = target.parentElement;
   const cardId = cardHeader.parentElement.id;
   if (target.className === "card__button--top") {
     if (target.innerHTML === "Сохранить") {
-      showAddWindow(cardId);
+      showAddWindow(main, cardId);
     } else if (target.innerHTML === "Удалить") {
       deleteBoardCard(board, cardId);
     }
   } else if (target.className === "card__button--bottom") {
-    showChoiceWindow(cardId);
+    showChoiceWindow(main, cardId);
   }
 }
 
