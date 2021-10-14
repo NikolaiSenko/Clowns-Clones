@@ -12,8 +12,8 @@ function app() {
   pinterestBtn.addEventListener("click", onBtn);
   search.addEventListener("change", onSearch);
   selectBtn.addEventListener("change", onSelect);
-  showPreloader();
   renderPinterest();
+  showPreloader();
 }
 
 //Preloader
