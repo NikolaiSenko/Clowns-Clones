@@ -20,7 +20,7 @@ function onBoardWindow(cardId) {
     boardData.push(cardId);
     setStorageData("Films", boardData);
     addWindow.remove();
-    deleteCard(cardId);    
+    deleteCard(cardId);
     alert("Сохранено на доску Films");
   } else if (target.id === "others-id") {
     let boardData = getStorageData("Others");
@@ -42,8 +42,8 @@ function onСhoiceWindow(cardId) {
     showAddWindow(cardId);
     choiceWindow.remove();
   } else if (target.id === "btn-complaint") {
-    deleteCard(cardId)
-    choiceWindow.remove()
+    deleteCard(cardId);
+    choiceWindow.remove();
   } else if (target.id === "btn-close") {
     choiceWindow.remove();
   }
