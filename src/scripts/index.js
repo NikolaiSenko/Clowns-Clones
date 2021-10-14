@@ -6,6 +6,7 @@ import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
 document.addEventListener("DOMContentLoaded", app);
 
 function app() {
+
   let preloader = document.getElementById("preloader");
   preloader.classList.add("hide-preloader");
   setInterval(() => {
@@ -14,7 +15,7 @@ function app() {
   const header = document.querySelector("header");
   const [pinterestBtn, serch, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
-  serch.addEventListener("change", onSearch);
+  serch.addEventListener("input", onSearch);
   selectBtn.addEventListener("change", onSelect);
   renderPinterest();
 }
@@ -31,9 +32,9 @@ function renderPinterest() {
     .then((response) => response.json())
     .then((response) => response.sort(() => Math.random() - 0.5))
     .then((response) => {
-      let masCard = [];
-      response.forEach((post) => masCard.push(createCard(post)));
-      return masCard;
+      let massCard = [];
+      response.forEach((post) => massCard.push(createCard(post)));
+      return massCard;
     })
     .then((massCard) => {
       massCard.forEach((card) => {
@@ -46,7 +47,7 @@ function renderPinterest() {
 
 //Events Handler
 function onBtn() {
-  renderPinterest();
+  location.reload();
 }
 
 function onSearch(e) {
@@ -76,7 +77,8 @@ function onSearch(e) {
       });
       initMasonry();
     });
-}
+
+
 
 function onSelect(event) {
   const value = event.target.value;
