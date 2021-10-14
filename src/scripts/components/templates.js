@@ -1,3 +1,4 @@
+import { WEBSTORAGECONFIG } from "../config/constant-data.js"
 function createElement(tag, className, text = "") {
   const element = document.createElement(tag);
   const textNode = document.createTextNode(text);
@@ -32,13 +33,14 @@ function createCard({ image, avatar, description, id } = post) {
 }
 
 function createAddWindow() {
+  const {animals, films, others} = WEBSTORAGECONFIG;
   const windowAdd = createElement("div", "background-window");
   const modalAdd = createElement("div", "add-window");
-  const firstBoard = createElement("button", "btn-choice-board", "Animals");
+  const firstBoard = createElement("button", "btn-choice-board", animals);
   firstBoard.id = "animals-id";
-  const secondBoard = createElement("button", "btn-choice-board", "Films");
+  const secondBoard = createElement("button", "btn-choice-board", films);
   secondBoard.id = "films-id";
-  const thirdBoard = createElement("button", "btn-choice-board", "Others");
+  const thirdBoard = createElement("button", "btn-choice-board", others);
   thirdBoard.id = "others-id";
   const btnClose = createElement("button", "btn-close", "Отмена");
   btnClose.id = "btn-close";
