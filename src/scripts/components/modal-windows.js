@@ -1,6 +1,6 @@
 import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
-import { deleteCard } from "./handlers.js";
+import { deleteCard } from "./utils.js";
 
 const main = document.querySelector(".main");
 
