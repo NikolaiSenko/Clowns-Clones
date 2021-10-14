@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import { initMasonry } from "./masonry.js";
-import { createCard } from "./templates.js";
-import { renderBoard, deleteCard } from "./board.js";
-import { showAddWindow, showChoiceWindow } from "./modal-windows.js";
-=======
-import { getMasonry } from "./components/masonry.js";
+import { initMasonry } from "./components/masonry.js";
 import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
->>>>>>> pinterest-dev
+import { getCards } from "./components/fetchAPI.js";
 
 document.addEventListener("DOMContentLoaded", app);
 
@@ -44,13 +38,6 @@ function renderPinterest() {
   });
 }
 
-function getCards(additionalMethod) {
-  fetch("https://615bec4fc298130017735e20.mockapi.io/posts")
-    .then((response) => response.json())
-    .then((cards) => cards.sort(() => Math.random() - 0.5))
-    .then((randomCards) => additionalMethod(randomCards));
-}
-
 //Events Handler
 function onBtn() {
   location.reload();
@@ -59,7 +46,7 @@ function onBtn() {
 function onSearch(e) {
   const input = e.target.value;
   if (input.length === 0) {
-    renderPinterest();
+    location.reload();
   } else {
     getCards((randomObjects) => {
       const container = document.querySelector(".container");
@@ -89,7 +76,9 @@ function onSearch(e) {
 
 function onSelect(event) {
   const value = event.target.value;
-  if (value === "animals") {
+  if (value === "select") {
+    location.reload();
+  } else if (value === "animals") {
     renderBoard("Animals");
   } else if (value === "films") {
     renderBoard("Films");

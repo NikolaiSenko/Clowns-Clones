@@ -1,7 +1,7 @@
 import { createCard, createElement } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { initMasonry } from "./masonry.js";
-import { onCard } from "./index.js";
+import { onCard } from "../index.js";
 
 //Render
 function renderBoard(board) {
