@@ -3,16 +3,15 @@ import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 
-const main = document.getElementById('main');
-document.addEventListener("DOMContentLoaded", () => app(main));
+document.addEventListener("DOMContentLoaded", app);
 
 
-function app(main) {
+function app(){
   const header = document.querySelector("header");
   const [pinterestBtn, serch, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
   serch.addEventListener("input", onSearch);
-  selectBtn.addEventListener("change", () => onSelect(main));
+  selectBtn.addEventListener("change", onSelect);
   renderPinterest();
 }
 
@@ -46,29 +45,29 @@ function onSearch() {
   console.log("Делает Леша");
 }
 
-function onSelect(main) {
+function onSelect(event) {
   const value = event.target.value;
   if (value === "animals") {
-    renderBoard(main, "Animals");
+    renderBoard("Animals");
   } else if (value === "films") {
-    renderBoard(main, "Films");
+    renderBoard("Films");
   } else if (value === "others") {
-    renderBoard(main, "Others");
+    renderBoard("Others");
   }
 }
 
-function onCard(main, board) {
+function onCard(board) {
   const target = event.target;
   const cardHeader = target.parentElement;
   const cardId = cardHeader.parentElement.id;
   if (target.className === "card__button--top") {
     if (target.innerHTML === "Сохранить") {
-      showAddWindow(main, cardId);
+      showAddWindow(cardId);
     } else if (target.innerHTML === "Удалить") {
       deleteBoardCard(board, cardId);
     }
   } else if (target.className === "card__button--bottom") {
-    showChoiceWindow(main, cardId);
+    showChoiceWindow(cardId);
   }
 }
 

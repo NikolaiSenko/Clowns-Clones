@@ -3,6 +3,8 @@ import { getStorageData, setStorageData } from "./storageApi.js";
 import { deleteCard } from "./utils.js";
 import { WEBSTORAGECONFIG } from "./config.js"
 
+const main = document.getElementById("main");
+
 
 //Function ON
 function onBoardWindow(cardId) {
@@ -52,13 +54,13 @@ function onСhoiceWindow(cardId) {
 }
 
 //Show window
-function showChoiceWindow(main, cardId) {
+function showChoiceWindow(cardId) {
   const сhoiceWindow = createСhoiceWindow();
   сhoiceWindow.addEventListener("click", () => onСhoiceWindow(cardId));
   main.append(сhoiceWindow);
 }
 
-function showAddWindow(main, cardId) {
+function showAddWindow(cardId) {
   const addWindow = createAddWindow();
   addWindow.addEventListener("click", () => onBoardWindow(cardId));
   main.append(addWindow);
