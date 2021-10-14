@@ -1,5 +1,6 @@
 import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
+import { deleteCard } from "./handlers.js";
 
 const main = document.querySelector(".main");
 
@@ -12,12 +13,14 @@ function onBoardWindow(cardId) {
     boardData.push(cardId);
     setStorageData("Animals", boardData);
     addWindow.remove();
+    deleteCard(cardId);
     alert("Сохранено на доску Animals");
   } else if (target.id === "films-id") {
     const boardData = getStorageData("Films");
     boardData.push(cardId);
     setStorageData("Films", boardData);
     addWindow.remove();
+    deleteCard(cardId);    
     alert("Сохранено на доску Films");
   } else if (target.id === "others-id") {
     let boardData = getStorageData("Others");
@@ -25,6 +28,7 @@ function onBoardWindow(cardId) {
     setStorageData("Others", boardData);
     alert("Сохранено на доску Others");
     addWindow.remove();
+    deleteCard(cardId);
   } else if (target.id === "btn-close") {
     addWindow.remove();
   }
@@ -38,7 +42,8 @@ function onСhoiceWindow(cardId) {
     showAddWindow(cardId);
     choiceWindow.remove();
   } else if (target.id === "btn-complaint") {
-    alert("в разработке");
+    deleteCard(cardId)
+    choiceWindow.remove()
   } else if (target.id === "btn-close") {
     choiceWindow.remove();
   }
