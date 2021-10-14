@@ -3,10 +3,12 @@ import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { getCards } from "./components/fetchAPI.js";
+import { WEBSTORAGECONFIG } from "./config/constant-data.js"
 
 document.addEventListener("DOMContentLoaded", app);
 
-function app() {
+
+function app(){
   const header = document.querySelector("header");
   const [pinterestBtn, search, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
@@ -82,13 +84,14 @@ function onSearch(e) {
 }
 
 function onSelect(event) {
+  const {animals, films, others} = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
-    renderBoard("Animals");
+    renderBoard(animals);
   } else if (value === "films") {
-    renderBoard("Films");
+    renderBoard(films);
   } else if (value === "others") {
-    renderBoard("Others");
+    renderBoard(others);
   }
 }
 

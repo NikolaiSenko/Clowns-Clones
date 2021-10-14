@@ -10,11 +10,10 @@ function renderBoard(board) {
   main.innerHTML = "";
   const headerBoard = createElement("section", "hero-board", board);
   const container = createElement("div", "container");
-  container.innerHTML = "";
   fetch(`https://615bec4fc298130017735e20.mockapi.io/posts/`)
-    .then((response) => response.json())
-    .then((response) =>
-      response.forEach((post) => {
+    .then((posts) => posts.json())
+    .then((posts) =>
+      posts.forEach((post) => {
         for (let i = 0; i < boardData.length; ++i) {
           if (post.id === boardData[i]) {
             const card = createCard(post);
@@ -29,8 +28,8 @@ function renderBoard(board) {
 }
 
 function deleteBoardCard(board, cardId) {
-  let boardData = getStorageData(board);
-  let index = boardData.indexOf(cardId);
+  const boardData = getStorageData(board);
+  const index = boardData.indexOf(cardId);
   boardData.splice(index, 1);
   setStorageData(board, boardData);
   renderBoard(board);

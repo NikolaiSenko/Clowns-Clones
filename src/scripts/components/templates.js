@@ -1,3 +1,4 @@
+import { WEBSTORAGECONFIG } from "../config/constant-data.js"
 function createElement(tag, className, text = "") {
   const element = document.createElement(tag);
   const textNode = document.createTextNode(text);
@@ -8,23 +9,23 @@ function createElement(tag, className, text = "") {
 
 function createCard({ image, avatar, description, id } = post) {
   const heroBoard = document.querySelector(".hero-board");
-  let card = createElement("div", "card");
+  const card = createElement("div", "card");
   card.id = id;
-  let cardHeader = createElement("div", "card__header");
-  let imgMain = createElement("img", "card__pictures");
+  const cardHeader = createElement("div", "card__header");
+  const imgMain = createElement("img", "card__pictures");
   imgMain.src = image;
   imgMain.setAttribute("crossorigin", "");
-  let buttonCardTop = createElement("button", "card__button--top");
+  const buttonCardTop = createElement("button", "card__button--top");
   if (heroBoard !== null) {
     buttonCardTop.innerHTML = "Удалить";
   } else {
     buttonCardTop.innerHTML = "Сохранить";
   }
-  let buttonCardBottom = createElement("button", "card__button--bottom");
-  let cardFooter = createElement("div", "card__footer");
-  let imgAvatars = createElement("img", "card__avatars");
+  const buttonCardBottom = createElement("button", "card__button--bottom", "...");
+  const cardFooter = createElement("div", "card__footer");
+  const imgAvatars = createElement("img", "card__avatars");
   imgAvatars.src = avatar;
-  let descriptions = createElement("p", "card__descriptions", description);
+  const descriptions = createElement("p", "card__descriptions", description);
   cardHeader.append(imgMain, buttonCardTop, buttonCardBottom);
   cardFooter.append(imgAvatars, descriptions);
   card.append(cardHeader, cardFooter);
@@ -32,13 +33,14 @@ function createCard({ image, avatar, description, id } = post) {
 }
 
 function createAddWindow() {
+  const {animals, films, others} = WEBSTORAGECONFIG;
   const windowAdd = createElement("div", "background-window");
   const modalAdd = createElement("div", "add-window");
-  const firstBoard = createElement("button", "btn-choice-board", "Animals");
+  const firstBoard = createElement("button", "btn-choice-board", animals);
   firstBoard.id = "animals-id";
-  const secondBoard = createElement("button", "btn-choice-board", "Films");
+  const secondBoard = createElement("button", "btn-choice-board", films);
   secondBoard.id = "films-id";
-  const thirdBoard = createElement("button", "btn-choice-board", "Others");
+  const thirdBoard = createElement("button", "btn-choice-board", others);
   thirdBoard.id = "others-id";
   const btnClose = createElement("button", "btn-close", "Отмена");
   btnClose.id = "btn-close";

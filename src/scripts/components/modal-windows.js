@@ -1,36 +1,44 @@
 import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { deleteCard } from "./utils.js";
+import { WEBSTORAGECONFIG } from "../config/constant-data.js"
 
-const main = document.querySelector(".main");
+const main = document.getElementById("main");
+
 
 //Function ON
 function onBoardWindow(cardId) {
+  const {animals, films, others} = WEBSTORAGECONFIG;
   const target = event.target;
   const addWindow = document.querySelector(".background-window");
-  if (target.id === "animals-id") {
-    const boardData = getStorageData("Animals");
-    boardData.push(cardId);
-    setStorageData("Animals", boardData);
-    addWindow.remove();
-    deleteCard(cardId);
-    alert("Сохранено на доску Animals");
-  } else if (target.id === "films-id") {
-    const boardData = getStorageData("Films");
-    boardData.push(cardId);
-    setStorageData("Films", boardData);
-    addWindow.remove();
-    deleteCard(cardId);
-    alert("Сохранено на доску Films");
-  } else if (target.id === "others-id") {
-    let boardData = getStorageData("Others");
-    boardData.push(cardId);
-    setStorageData("Others", boardData);
-    alert("Сохранено на доску Others");
-    addWindow.remove();
-    deleteCard(cardId);
-  } else if (target.id === "btn-close") {
-    addWindow.remove();
+  switch (target.id) {
+    case "animals-id":
+      const boardDataAnimals = getStorageData(animals);
+      boardDataAnimals.push(cardId);
+      setStorageData(animals, boardDataAnimals);
+      addWindow.remove();
+      alert("Сохранено на доску Animals");
+      deleteCard(cardId);
+      break;
+    case "films-id":
+      const boardDataFilms = getStorageData(films);
+      boardDataFilms.push(cardId);
+      setStorageData(films, boardDataFilms);
+      addWindow.remove();
+      alert("Сохранено на доску Films");
+      deleteCard(cardId);
+      break;
+    case "others-id":
+      const boardDataOthers = getStorageData(others);
+      boardDataOthers.push(cardId);
+      setStorageData(others, boardDataOthers);
+      addWindow.remove();
+      alert("Сохранено на доску Others");
+      deleteCard(cardId);
+      break;
+    case "btn-close":
+      addWindow.remove();
+      break;
   }
 }
 
