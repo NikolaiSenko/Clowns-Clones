@@ -3,12 +3,11 @@ import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { getCards } from "./components/fetchAPI.js";
-import { WEBSTORAGECONFIG } from "./config/constant-data.js"
+import { WEBSTORAGECONFIG } from "./config/constant-data.js";
 
 document.addEventListener("DOMContentLoaded", app);
 
-
-function app(){
+function app() {
   const header = document.querySelector("header");
   const [pinterestBtn, search, selectBtn] = header.children;
   pinterestBtn.addEventListener("click", onBtn);
@@ -22,7 +21,7 @@ function app(){
 function showPreloader() {
   let preloader = document.getElementById("preloader");
   preloader.classList.add("hide-preloader");
-  setInterval(() => {
+  setTimeout(() => {
     preloader.classList.add("preloader-hidden");
   }, 1500);
 }
@@ -74,8 +73,8 @@ function onSearch(e) {
         });
       } else {
         const nothingFound = document.createElement("h2");
-        nothingFound.innerHTML =
-          "На нашем христианском сервер,ничего не найдено!!!";
+        nothingFound.innerText =
+          "На нашем христианском сервере,ничего не найдено!!!";
         container.append(nothingFound);
       }
       initMasonry();
@@ -84,7 +83,7 @@ function onSearch(e) {
 }
 
 function onSelect(event) {
-  const {animals, films, others} = WEBSTORAGECONFIG;
+  const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
     renderBoard(animals);
