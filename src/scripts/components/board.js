@@ -4,9 +4,8 @@ import { initMasonry } from "./masonry.js";
 import { onCard } from "../index.js";
 
 //Render
-function renderBoard(board) {
+function renderBoard(main, board) {
   const boardData = getStorageData(board);
-  const main = document.querySelector("main");
   main.innerHTML = "";
   const headerBoard = createElement("section", "hero-board", board);
   const container = createElement("div", "container");
