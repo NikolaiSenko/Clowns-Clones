@@ -33,7 +33,6 @@ function createCard({ image, avatar, description, id } = post) {
 }
 
 function createAddWindow() {
-  const section = document.querySelector("section");
   const { animals, films, others } = WEBSTORAGECONFIG;
   const windowAdd = createElement("div", "background-window");
   const modalAdd = createElement("div", "add-window");
@@ -45,6 +44,7 @@ function createAddWindow() {
   thirdBoard.id = "others-id";
   const btnClose = createElement("button", "btn-close", "Отмена");
   btnClose.id = "btn-close";
+  const section = document.querySelector("section");
   if (section !== null) {
     firstBoard.hidden = section.outerText === "Animals" ? true : false;
     secondBoard.hidden = section.outerText === "Films" ? true : false;
