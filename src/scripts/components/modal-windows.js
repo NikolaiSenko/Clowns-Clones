@@ -1,14 +1,13 @@
 import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { deleteCard } from "./utils.js";
-import { WEBSTORAGECONFIG } from "../config/constant-data.js"
+import { WEBSTORAGECONFIG } from "../config/constant-data.js";
 
 const main = document.getElementById("main");
 
-
 //Function ON
 function onBoardWindow(cardId) {
-  const {animals, films, others} = WEBSTORAGECONFIG;
+  const { animals, films, others } = WEBSTORAGECONFIG;
   const target = event.target;
   const addWindow = document.querySelector(".background-window");
   switch (target.id) {
@@ -44,7 +43,6 @@ function onBoardWindow(cardId) {
 
 function onСhoiceWindow(cardId) {
   const choiceWindow = document.querySelector(".background-window");
-  console.log(choiceWindow);
   const target = event.target;
   if (target.id === "btn-add") {
     showAddWindow(cardId);
