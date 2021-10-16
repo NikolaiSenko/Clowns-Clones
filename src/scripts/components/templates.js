@@ -1,4 +1,4 @@
-import { WEBSTORAGECONFIG } from "../config/constant-data.js"
+import { WEBSTORAGECONFIG } from "../config/constant-data.js";
 function createElement(tag, className, text = "") {
   const element = document.createElement(tag);
   const textNode = document.createTextNode(text);
@@ -21,7 +21,7 @@ function createCard({ image, avatar, description, id } = post) {
   } else {
     buttonCardTop.innerHTML = "Сохранить";
   }
-  const buttonCardBottom = createElement("button", "card__button--bottom", "...");
+  const buttonCardBottom = createElement("button", "card__button--bottom");
   const cardFooter = createElement("div", "card__footer");
   const imgAvatars = createElement("img", "card__avatars");
   imgAvatars.src = avatar;
@@ -33,7 +33,7 @@ function createCard({ image, avatar, description, id } = post) {
 }
 
 function createAddWindow() {
-  const {animals, films, others} = WEBSTORAGECONFIG;
+  const { animals, films, others } = WEBSTORAGECONFIG;
   const windowAdd = createElement("div", "background-window");
   const modalAdd = createElement("div", "add-window");
   const firstBoard = createElement("button", "btn-choice-board", animals);
@@ -44,6 +44,12 @@ function createAddWindow() {
   thirdBoard.id = "others-id";
   const btnClose = createElement("button", "btn-close", "Отмена");
   btnClose.id = "btn-close";
+  const section = document.querySelector("section");
+  if (section !== null) {
+    firstBoard.hidden = section.outerText === "Animals" ? true : false;
+    secondBoard.hidden = section.outerText === "Films" ? true : false;
+    thirdBoard.hidden = section.outerText === "Others" ? true : false;
+  }
   modalAdd.append(firstBoard, secondBoard, thirdBoard, btnClose);
   windowAdd.append(modalAdd);
   return windowAdd;
