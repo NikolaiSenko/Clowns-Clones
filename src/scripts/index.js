@@ -6,6 +6,7 @@ import { getCards } from "./components/fetchAPI.js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
 
 document.addEventListener("DOMContentLoaded", app);
+const main = document.getElementById("main");
 
 function app() {
   const header = document.querySelector("header");
@@ -86,11 +87,11 @@ function onSelect(event) {
   const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
-    renderBoard(animals);
+    renderBoard(main, animals);
   } else if (value === "films") {
-    renderBoard(films);
+    renderBoard(main, films);
   } else if (value === "others") {
-    renderBoard(others);
+    renderBoard(main, others);
   }
 }
 
@@ -100,12 +101,12 @@ function onCard(board) {
   const cardId = cardHeader.parentElement.id;
   if (target.className === "card__button--top") {
     if (target.innerHTML === "Сохранить") {
-      showAddWindow(cardId);
+      showAddWindow(main, cardId);
     } else if (target.innerHTML === "Удалить") {
       deleteBoardCard(board, cardId);
     }
   } else if (target.className === "card__button--bottom") {
-    showChoiceWindow(cardId);
+    showChoiceWindow(main, cardId);
   }
 }
 

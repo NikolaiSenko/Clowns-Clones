@@ -3,8 +3,6 @@ import { getStorageData, setStorageData } from "./storageApi.js";
 import { deleteCard } from "./utils.js";
 import { WEBSTORAGECONFIG } from "../config/constant-data.js";
 
-const main = document.getElementById("main");
-
 //Function ON
 function onBoardWindow(cardId) {
   const { animals, films, others } = WEBSTORAGECONFIG;
@@ -38,11 +36,11 @@ function onBoardWindow(cardId) {
   }
 }
 
-function onСhoiceWindow(cardId) {
+function onСhoiceWindow(main, cardId) {
   const choiceWindow = document.querySelector(".background-window");
   const target = event.target;
   if (target.id === "btn-add") {
-    showAddWindow(cardId);
+    showAddWindow(main, cardId);
     choiceWindow.remove();
   } else if (target.id === "btn-complaint") {
     deleteCard(cardId);
@@ -53,13 +51,13 @@ function onСhoiceWindow(cardId) {
 }
 
 //Show window
-function showChoiceWindow(cardId) {
+function showChoiceWindow(main, cardId) {
   const сhoiceWindow = createСhoiceWindow();
-  сhoiceWindow.addEventListener("click", () => onСhoiceWindow(cardId));
+  сhoiceWindow.addEventListener("click", () => onСhoiceWindow(main, cardId));
   main.append(сhoiceWindow);
 }
 
-function showAddWindow(cardId) {
+function showAddWindow(main, cardId) {
   const addWindow = createAddWindow();
   addWindow.addEventListener("click", () => onBoardWindow(cardId));
   main.append(addWindow);
