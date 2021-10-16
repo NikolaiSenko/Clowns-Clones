@@ -5,6 +5,8 @@ import { onCard } from "../index.js";
 
 //Render
 function renderBoard(main, board) {
+  const standartOption = document.getElementById("choice")
+  standartOption.hidden = true;
   const boardData = getStorageData(board);
   main.innerHTML = "";
   const headerBoard = createElement("section", "hero-board", board);
