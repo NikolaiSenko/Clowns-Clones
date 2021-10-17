@@ -6,5 +6,20 @@ function deleteCard(cardId) {
   initMasonry();
 }
 
+function sortCard(response, input) {
+  return response.filter((el) => {
+    let intersect = el.description
+      .toLowerCase()
+      .split("#")
+      .filter((value) =>
+        input
+          .toLowerCase()
+          .split("#")
+          .filter((e) => e !== "")
+          .includes(value)
+      );
+    return intersect.length;
+  });
+}
 
-export { deleteCard };
+export { deleteCard, sortCard };

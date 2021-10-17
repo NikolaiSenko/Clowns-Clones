@@ -1,9 +1,7 @@
-import { initMasonry } from "./components/masonry.js";
-import { createCard } from "./components/templates.js";
+import { sortCard } from "./components/utils.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
-// import { sortCard } from "./components/utils/js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
 
 document.addEventListener("DOMContentLoaded", app);
@@ -38,26 +36,6 @@ function onBtn() {
   location.reload();
 }
 
-function sortCard(response) {
-  console.log(response);
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
-  const masCard = response.filter((el) => {
-    let intersect = el.description
-      .toLowerCase()
-      .split("#")
-      .filter((value) =>
-        input
-          .toLowerCase()
-          .split("#")
-          .filter((e) => e !== "")
-          .includes(value)
-      );
-    masCard = intersect.length !== 0;
-    return masCard;
-  });
-}
-
 function onSearch(e) {
   const input = e.target.value;
   const section = document.querySelector(".hero-board");
@@ -65,24 +43,13 @@ function onSearch(e) {
     if (input.length === 0) {
       location.reload();
     } else {
+      const container = document.querySelector(".container");
+      container.innerHTML = "";
       loadCards()
         .then(randomCards)
-        .then(sortCard)
-        .then((response) => {
-          if (response.length !== 0) {
-            response.forEach((card) => {
-              let createdCard = createCard(card);
-              createdCard.addEventListener("click", onCard);
-              container.append(createdCard);
-            });
-          } else {
-            const nothingFound = document.createElement("h2");
-            nothingFound.innerText =
-              "На нашем христианском сервере,ничего не найдено!!!";
-            container.append(nothingFound);
-          }
-          initMasonry();
-        });
+        .then((response) => sortCard(response, input))
+        .then(renderCards)
+        .catch(alert);
     }
   }
 }
