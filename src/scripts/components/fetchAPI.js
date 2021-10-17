@@ -4,18 +4,18 @@ import { initMasonry } from "./masonry";
 
 function loadCards() {
   return fetch("https://615bec4fc298130017735e20.mockapi.io/posts").then(
-    (response) => response.json()
+    (posts) => posts.json()
   );
 }
 
-function randomCards(response) {
-  return response.sort(() => Math.random() - 0.5);
+function randomCards(posts) {
+  return posts.sort(() => Math.random() - 0.5);
 }
 
-function renderCards(response) {
+function renderCards(posts) {
   return new Promise(function (resolve) {
     const container = document.querySelector(".container");
-    response.forEach((card) => {
+    posts.forEach((card) => {
       let createdCard = createCard(card);
       createdCard.addEventListener("click", onCard);
       container.append(createdCard);

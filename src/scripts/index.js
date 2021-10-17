@@ -47,7 +47,7 @@ function onSearch(e) {
       container.innerHTML = "";
       loadCards()
         .then(randomCards)
-        .then((response) => sortCard(response, input))
+        .then((posts) => sortCard(posts, input))
         .then(renderCards)
         .catch(alert);
     }

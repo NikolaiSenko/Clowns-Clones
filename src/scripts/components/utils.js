@@ -6,9 +6,9 @@ function deleteCard(cardId) {
   initMasonry();
 }
 
-function sortCard(response, input) {
-  return response.filter((el) => {
-    let intersect = el.description
+function sortCard(posts, input) {
+  return posts.filter((post) => {
+    let intersect = post.description
       .toLowerCase()
       .split("#")
       .filter((value) =>
