@@ -2,7 +2,7 @@ import { initMasonry } from "./components/masonry.js";
 import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
-import { getCards } from "./components/fetchAPI.js";
+import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
 
 document.addEventListener("DOMContentLoaded", app);
@@ -29,15 +29,7 @@ function showPreloader() {
 
 //Render
 function renderPinterest() {
-  getCards((massCards) => {
-    const container = document.querySelector(".container");
-    massCards.forEach((card) => {
-      let createdCard = createCard(card);
-      createdCard.addEventListener("click", onCard);
-      container.append(createdCard);
-    });
-    initMasonry();
-  });
+  loadCards().then(randomCards).then(renderCards).catch(alert);
 }
 
 //Events Handler
@@ -47,39 +39,44 @@ function onBtn() {
 
 function onSearch(e) {
   const input = e.target.value;
-  if (input.length === 0) {
-    location.reload();
-  } else {
-    getCards((randomObjects) => {
-      const container = document.querySelector(".container");
-      container.innerHTML = "";
-      const filteredCards = randomObjects.filter((el) => {
-        let intersect = el.description
-          .toLowerCase()
-          .split("#")
-          .filter((value) =>
-            input
+  const section = document.querySelector(".hero-board");
+  if (section === null) {
+    if (input.length === 0) {
+      location.reload();
+    } else {
+      loadCards()
+        .then(randomCards)
+        .then((response) => {
+          const container = document.querySelector(".container");
+          container.innerHTML = "";
+          const filteredCards = response.filter((el) => {
+            let intersect = el.description
               .toLowerCase()
               .split("#")
-              .filter((e) => e !== "")
-              .includes(value)
-          );
-        return intersect.length;
-      });
-      if (filteredCards.length !== 0) {
-        filteredCards.forEach((card) => {
-          let createdCard = createCard(card);
-          createdCard.addEventListener("click", onCard);
-          container.append(createdCard);
+              .filter((value) =>
+                input
+                  .toLowerCase()
+                  .split("#")
+                  .filter((e) => e !== "")
+                  .includes(value)
+              );
+            return intersect.length;
+          });
+          if (filteredCards.length !== 0) {
+            filteredCards.forEach((card) => {
+              let createdCard = createCard(card);
+              createdCard.addEventListener("click", onCard);
+              container.append(createdCard);
+            });
+          } else {
+            const nothingFound = document.createElement("h2");
+            nothingFound.innerText =
+              "На нашем христианском сервере,ничего не найдено!!!";
+            container.append(nothingFound);
+          }
+          initMasonry();
         });
-      } else {
-        const nothingFound = document.createElement("h2");
-        nothingFound.innerText =
-          "На нашем христианском сервере,ничего не найдено!!!";
-        container.append(nothingFound);
-      }
-      initMasonry();
-    });
+    }
   }
 }
 
@@ -110,4 +107,4 @@ function onCard(board) {
   }
 }
 
-export { onCard };
+export { onCard, renderPinterest };
