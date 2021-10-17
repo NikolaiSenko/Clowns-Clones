@@ -3,6 +3,7 @@ import { createCard } from "./components/templates.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
+// import { sortCard } from "./components/utils/js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
 
 document.addEventListener("DOMContentLoaded", app);
@@ -37,6 +38,26 @@ function onBtn() {
   location.reload();
 }
 
+function sortCard(response) {
+  console.log(response);
+  const container = document.querySelector(".container");
+  container.innerHTML = "";
+  const masCard = response.filter((el) => {
+    let intersect = el.description
+      .toLowerCase()
+      .split("#")
+      .filter((value) =>
+        input
+          .toLowerCase()
+          .split("#")
+          .filter((e) => e !== "")
+          .includes(value)
+      );
+    masCard = intersect.length !== 0;
+    return masCard;
+  });
+}
+
 function onSearch(e) {
   const input = e.target.value;
   const section = document.querySelector(".hero-board");
@@ -46,24 +67,10 @@ function onSearch(e) {
     } else {
       loadCards()
         .then(randomCards)
+        .then(sortCard)
         .then((response) => {
-          const container = document.querySelector(".container");
-          container.innerHTML = "";
-          const filteredCards = response.filter((el) => {
-            let intersect = el.description
-              .toLowerCase()
-              .split("#")
-              .filter((value) =>
-                input
-                  .toLowerCase()
-                  .split("#")
-                  .filter((e) => e !== "")
-                  .includes(value)
-              );
-            return intersect.length;
-          });
-          if (filteredCards.length !== 0) {
-            filteredCards.forEach((card) => {
+          if (response.length !== 0) {
+            response.forEach((card) => {
               let createdCard = createCard(card);
               createdCard.addEventListener("click", onCard);
               container.append(createdCard);
@@ -107,4 +114,4 @@ function onCard(board) {
   }
 }
 
-export { onCard, renderPinterest };
+export { onCard };
