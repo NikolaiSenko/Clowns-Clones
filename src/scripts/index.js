@@ -46,17 +46,19 @@ function onSearch(e) {
       loadCards()
         .then(randomCards)
         .then((posts) => sortCard(posts, input))
-        .then((posts) => (posts.length !== 0 ? renderCards(posts) : pashalka()))
+        .then((posts) =>
+          posts.length !== 0 ? renderCards(posts) : renderContainer()
+        )
         .catch(alert);
     }
   }
 }
 
-function pashalka() {
+function renderContainer() {
   const nothingFound = document.createElement("h2");
-  const main = document.getElementById("main");
+  const container = document.querySelector(".container");
   nothingFound.innerText = "На нашем христианском сервере,ничего не найдено!!!";
-  main.append(nothingFound);
+  container.append(nothingFound);
 }
 
 function onSelect(event) {
