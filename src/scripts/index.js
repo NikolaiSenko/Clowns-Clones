@@ -3,9 +3,7 @@ import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
-
 document.addEventListener("DOMContentLoaded", app);
-const main = document.getElementById("main");
 
 function app() {
   const header = document.querySelector("header");
@@ -55,18 +53,20 @@ function onSearch(e) {
 }
 
 function onSelect(event) {
+  const main = document.getElementById("main");
   const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
-    renderBoard(main, animals);
+    renderBoard(animals);
   } else if (value === "films") {
-    renderBoard(main, films);
+    renderBoard(films);
   } else if (value === "others") {
-    renderBoard(main, others);
+    renderBoard(others);
   }
 }
 
 function onCard(board) {
+  const main = document.getElementById("main");
   const target = event.target;
   const cardHeader = target.parentElement;
   const cardId = cardHeader.parentElement.id;

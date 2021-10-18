@@ -4,7 +4,8 @@ import { initMasonry } from "./masonry.js";
 import { onCard } from "../index.js";
 
 //Render
-function renderBoard(main, board) {
+function renderBoard(board) {
+  const main = document.getElementById("main");
   const standartOption = document.getElementById("choice")
   standartOption.hidden = true;
   const boardData = getStorageData(board);
