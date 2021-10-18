@@ -57,10 +57,13 @@ function onSelect(event) {
   const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
+    renderSelect(value);
     renderBoard(animals);
   } else if (value === "films") {
+    renderSelect(value);
     renderBoard(films);
   } else if (value === "others") {
+    renderSelect(value);
     renderBoard(others);
   }
 }
@@ -78,6 +81,25 @@ function onCard(board) {
     }
   } else if (target.className === "card__button--bottom") {
     showChoiceWindow(main, cardId);
+  }
+}
+
+function renderSelect(value) {
+  const select = document.getElementById("choice");
+  const [checked, animalsOption, filmsOption, outherOption] =
+    select.parentElement;
+  if (value === "animals") {
+    animalsOption.innerHTML = "Animals" + " &check;";
+    filmsOption.innerHTML = "Films";
+    outherOption.innerHTML = "Others";
+  } else if (value === "films") {
+    animalsOption.innerHTML = "Animals";
+    filmsOption.innerHTML = "Films" + " &check;";
+    outherOption.innerHTML = "Others";
+  } else if (value === "others") {
+    animalsOption.innerHTML = "Animals";
+    filmsOption.innerHTML = "Films";
+    outherOption.innerHTML = "Others" + " &check;";
   }
 }
 
