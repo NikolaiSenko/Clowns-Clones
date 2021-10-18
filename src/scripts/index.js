@@ -67,7 +67,7 @@ function onSelect(event) {
   const value = event.target.value;
   if (value === "animals") {
     renderBoard(animals);
-  } else if (value === "films") {
+  } else if (value === "films") {;
     renderBoard(films);
   } else if (value === "others") {
     renderBoard(others);
