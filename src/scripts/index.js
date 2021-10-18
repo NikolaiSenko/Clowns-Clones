@@ -55,7 +55,6 @@ function onSearch(e) {
 }
 
 function onSelect(event) {
-  const main = document.getElementById("main");
   const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
