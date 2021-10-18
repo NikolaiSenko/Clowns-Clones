@@ -1,4 +1,4 @@
-import { sortCard } from "./components/utils.js";
+import { sortCard, renderContainer } from "./components/utils.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
@@ -54,20 +54,13 @@ function onSearch(e) {
   }
 }
 
-function renderContainer() {
-  const nothingFound = document.createElement("h2");
-  const container = document.querySelector(".container");
-  nothingFound.innerText = "На нашем христианском сервере,ничего не найдено!!!";
-  container.append(nothingFound);
-}
-
 function onSelect(event) {
   const main = document.getElementById("main");
   const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {
     renderBoard(animals);
-  } else if (value === "films") {;
+  } else if (value === "films") {
     renderBoard(films);
   } else if (value === "others") {
     renderBoard(others);
