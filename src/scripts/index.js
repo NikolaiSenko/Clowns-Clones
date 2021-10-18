@@ -1,4 +1,4 @@
-import { sortCard } from "./components/utils.js";
+import { sortCard, renderContainer } from "./components/utils.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
@@ -46,14 +46,15 @@ function onSearch(e) {
       loadCards()
         .then(randomCards)
         .then((posts) => sortCard(posts, input))
-        .then(renderCards)
+        .then((posts) =>
+          posts.length !== 0 ? renderCards(posts) : renderContainer()
+        )
         .catch(alert);
     }
   }
 }
 
 function onSelect(event) {
-  const main = document.getElementById("main");
   const { animals, films, others } = WEBSTORAGECONFIG;
   const value = event.target.value;
   if (value === "animals") {

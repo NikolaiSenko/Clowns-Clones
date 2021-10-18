@@ -12,12 +12,13 @@
     border-radius: 3rem;
     border: none;
     color: white;
-    background-color: black;
+    background-color: #df0404;
   }
   &__search {
     font-weight: bold;
     display: block;
     flex: auto;
+    text-indent: 1rem;
     margin: 0 0.5rem;
     border-radius: 3rem;
     border: none;
@@ -28,16 +29,16 @@
       background-color: $lite-grey;
     }
     &:focus {
-      border: solid 0.4rem rgb(25, 123, 252);
+      border: solid 0.3rem #4d4a55;
     }
   }
   &__select {
     font-weight: bold;
     padding: 1.1rem;
-    padding-right:1px;
+    padding-right: 1px;
     border-radius: 3rem;
     border: none;
     color: white;
-    background-color: black;
+    background-color: #767676;
   }
 }

@@ -22,4 +22,11 @@ function sortCard(posts, input) {
   });
 }
 
-export { deleteCard, sortCard };
+function renderContainer() {
+  const nothingFound = document.createElement("h2");
+  const container = document.querySelector(".container");
+  nothingFound.innerText = "На нашем христианском сервере,ничего не найдено!!!";
+  container.append(nothingFound);
+}
+
+export { deleteCard, sortCard, renderContainer };
