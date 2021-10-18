@@ -14,5 +14,6 @@ Another almost successful [Pinterest](https://www.pinterest.com/) clone.
 * **GIT:** during project development all the tasks were checked via [GIT-repository](https://github.com/NikolaiSenko/Clowns-Clones). 
 * **Server request:** In our project we used [MockApi](https://mockapi.io/) to fetch data from remote server.
 * **Group Work:** All members created new branches in GIT-repository for a new feature, bumped into conflicts and made pull requests for teamleader to check. Therefore, the work on the project was as close as possible to commercial development. 
+
 Everyone got **invaluable experience** during group work.
 So here you can check what we got at the end: (place for a link)
