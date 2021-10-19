@@ -36,3 +36,13 @@
     }
   }
 }
+.report-footer {
+  @include md-min{
+    padding: 1% 0;
+  }
+}
+.report-window{
+  @include sm-max{
+    width:60%;
+  }
+}

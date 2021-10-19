@@ -35,8 +35,13 @@ function createCard({ image, avatar, description, id } = post) {
 function createAddWindow() {
   const { animals, films, others } = WEBSTORAGECONFIG;
   const windowAdd = createElement("div", "background-window");
+  windowAdd.id = "background-window";
   const modalAdd = createElement("div", "add-window");
-  const title = createElement("div", "title-modal-window", "Сохраните пост на доску")
+  const title = createElement(
+    "div",
+    "title-modal-window",
+    "Сохраните пост на доску"
+  );
   const firstBoard = createElement("button", "btn-choice-board", animals);
   firstBoard.id = "animals-id";
   const secondBoard = createElement("button", "btn-choice-board", films);
@@ -58,6 +63,7 @@ function createAddWindow() {
 
 function createСhoiceWindow() {
   const modalChoice = createElement("div", "background-window");
+  modalChoice.id = "background-window";
   const modalSelection = createElement("div", "choice-window");
   const btnAdd = createElement("button", "choice-btn", "Добавить на доску");
   btnAdd.id = "btn-add";
@@ -74,8 +80,14 @@ function createСhoiceWindow() {
 function createMessageWindow(message) {
   const messageWindow = createElement("div", "background-window");
   const newMessage = createElement("div", "message", message);
-  messageWindow.append(newMessage)
+  messageWindow.append(newMessage);
   return messageWindow;
 }
 
-export { createCard, createAddWindow, createСhoiceWindow, createElement, createMessageWindow };
+export {
+  createCard,
+  createAddWindow,
+  createСhoiceWindow,
+  createElement,
+  createMessageWindow,
+};

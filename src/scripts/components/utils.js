@@ -23,12 +23,12 @@ function sortCard(posts, input) {
   });
 }
 
-function showMassage(text){
+function showMessage(text){
   const message = createMessageWindow(text);
   document.body.append(message);
   setTimeout(() => {
     message.remove();
-  }, 1000);
+  }, 1300);
 }
 
 function renderContainer() {
@@ -38,4 +38,4 @@ function renderContainer() {
   container.append(nothingFound);
 }
 
-export { deleteCard, sortCard, renderContainer, showMassage };
+export { deleteCard, sortCard, renderContainer, showMessage };
