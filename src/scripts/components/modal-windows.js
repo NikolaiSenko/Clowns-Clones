@@ -76,14 +76,13 @@ function onReportWindow(cardId){
 //Show window
 function showReportWindow(cardId){
   const reportWindow = createReportWindow();
-  reportWindow.addEventListener
   reportWindow.addEventListener("click", () => onReportWindow(cardId));
   document.body.addEventListener("keydown", (event) => {
     if (event.keyCode === 27){
       reportWindow.remove();
     }
   });
-  document.body.append(reportWindow);;
+  document.body.append(reportWindow);
 }
 
 function showChoiceWindow(cardId) {

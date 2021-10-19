@@ -5,8 +5,8 @@ function createReportWindow() {
   overlay.id = "background-window";
   const modalReport = createElement("div", "report-window");
   modalReport.id = "report-window";
-  const container = createElement("div", "reports-container");
   const title = createElement("div", "modal__report--title", "Жалоба на пин");
+  const container = createElement("div", "reports-container");
   const spamReport = createReportOption(
     "spam",
     "Спам",
