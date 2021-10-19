@@ -72,10 +72,10 @@ function createСhoiceWindow() {
 }
 
 function createMessageWindow(message) {
-  const windowMessage = createElement("div", "background-window");
+  const backgroundWindow = createElement("div", "background-window");
   const messageWindow = createElement("div", "message", message);
-  windowMessage.append(messageWindow)
-  return windowMessage;
+  backgroundWindow.append(messageWindow)
+  return backgroundWindow;
 }
 
 export { createCard, createAddWindow, createСhoiceWindow, createElement, createMessageWindow };
