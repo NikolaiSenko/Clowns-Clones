@@ -1,7 +1,8 @@
 import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
-import { deleteCard, showMassage } from "./utils.js";
+import { deleteCard, showMessage } from "./utils.js";
 import { WEBSTORAGECONFIG } from "../config/constant-data.js";
+import {createReportWindow} from "./modalReport.js"
 
 //Function ON
 function onBoardWindow(cardId) {
@@ -14,24 +15,24 @@ function onBoardWindow(cardId) {
       boardDataAnimals.push(cardId);
       setStorageData(animals, boardDataAnimals);
       addWindow.remove();
-      showMassage("Сохранено на доску Animals");
+      showMessage("Сохранено на доску Animals");
       break;
     case "films-id":
       const boardDataFilms = getStorageData(films);
       boardDataFilms.push(cardId);
       setStorageData(films, boardDataFilms);
       addWindow.remove();
-      showMassage("Сохранено на доску Films");
+      showMessage("Сохранено на доску Films");
       break;
     case "others-id":
       const boardDataOthers = getStorageData(others);
       boardDataOthers.push(cardId);
       setStorageData(others, boardDataOthers);
       addWindow.remove();
-      showMassage("Сохранено на доску Others");
+      showMessage("Сохранено на доску Others");
       break;
     case "btn-close":
-    case "":
+    case "background-window":
       addWindow.remove();
       break;
   }
@@ -46,26 +47,54 @@ function onСhoiceWindow(cardId) {
       choiceWindow.remove();
       break;
     case "btn-complaint":
-      deleteCard(cardId);
+      showReportWindow(cardId);
       choiceWindow.remove();
       break;
     case "btn-close":
-    case "":
+    case "background-window":
       choiceWindow.remove();
       break;
   }
 }
 
+function onReportWindow(cardId){
+  const reportWindow = document.querySelector('.background-window');
+  const target = event.target;
+  switch (target.id) {
+  case 'btn-submit':
+    deleteCard(cardId);
+    reportWindow.remove();
+    showMessage('Ваша жалоба отправлена!')
+    break;
+   case 'btn-cancel':
+    case "background-window":
+      reportWindow.remove();
+      break;
+  }
+}
+
 //Show window
-function showChoiceWindow(cardId) {
-  const сhoiceWindow = createСhoiceWindow();
-  сhoiceWindow.addEventListener("click", () => onСhoiceWindow(cardId));
+function showReportWindow(cardId){
+  const reportWindow = createReportWindow();
+  reportWindow.addEventListener
+  reportWindow.addEventListener("click", () => onReportWindow(cardId));
   document.body.addEventListener("keydown", (event) => {
     if (event.keyCode === 27){
-      сhoiceWindow.remove();
+      reportWindow.remove();
     }
   });
-  document.body.append(сhoiceWindow);
+  document.body.append(reportWindow);;
+}
+
+function showChoiceWindow(cardId) {
+  const choiceWindow = createСhoiceWindow();
+  choiceWindow.addEventListener("click", () => onСhoiceWindow(cardId));
+  document.body.addEventListener("keydown", (event) => {
+    if (event.keyCode === 27){
+      choiceWindow.remove();
+    }
+  });
+  document.body.append(choiceWindow);
 }
 
 function showAddWindow(cardId) {
