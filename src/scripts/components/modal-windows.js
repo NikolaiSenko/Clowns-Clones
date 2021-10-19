@@ -36,11 +36,11 @@ function onBoardWindow(cardId) {
   }
 }
 
-function onСhoiceWindow(main, cardId) {
+function onСhoiceWindow(cardId) {
   const choiceWindow = document.querySelector(".background-window");
   const target = event.target;
   if (target.id === "btn-add") {
-    showAddWindow(main, cardId);
+    showAddWindow(cardId);
     choiceWindow.remove();
   } else if (target.id === "btn-complaint") {
     deleteCard(cardId);
@@ -51,16 +51,16 @@ function onСhoiceWindow(main, cardId) {
 }
 
 //Show window
-function showChoiceWindow(main, cardId) {
+function showChoiceWindow(cardId) {
   const сhoiceWindow = createСhoiceWindow();
-  сhoiceWindow.addEventListener("click", () => onСhoiceWindow(main, cardId));
-  main.append(сhoiceWindow);
+  сhoiceWindow.addEventListener("click", () => onСhoiceWindow(cardId));
+  document.body.append(сhoiceWindow);
 }
 
-function showAddWindow(main, cardId) {
+function showAddWindow(cardId) {
   const addWindow = createAddWindow();
   addWindow.addEventListener("click", () => onBoardWindow(cardId));
-  main.append(addWindow);
+  document.body.append(addWindow);
 }
 
 export { showAddWindow, showChoiceWindow };
