@@ -73,8 +73,8 @@ function createСhoiceWindow() {
 
 function createMessageWindow(message) {
   const messageWindow = createElement("div", "background-window");
-  const message = createElement("div", "message", message);
-  messageWindow.append(message)
+  const newMessage = createElement("div", "message", message);
+  messageWindow.append(newMessage)
   return messageWindow;
 }
 
