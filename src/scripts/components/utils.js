@@ -1,5 +1,5 @@
 import { initMasonry } from "./masonry.js";
-import { createMessageWindow } from "./templates.js";
+import { createMessageWindow, createElement } from "./templates.js";
 
 function deleteCard(cardId) {
   const card = document.getElementById(cardId);
@@ -36,14 +36,42 @@ function showPreloader() {
   preloader.classList.add("hide-preloader");
   setTimeout(() => {
     preloader.remove();
-  }, 1500);
+  }, 1300);
 }
 
-function renderContainer() {
+function renderPreloader() {
+  const preloader = createElement("div");
+  preloader.id = "preloader";
+  const preloaderGif = createElement("img");
+  preloaderGif.setAttribute("alt", "preloader");
+  preloaderGif.src = "img/preloader/Preloader-Gif.gif";
+  preloader.append(preloaderGif);
+  const main = document.getElementById("main");
+  main.append(preloader);
+  showPreloader();
+}
+
+function renderContainer(input) {
   const nothingFound = document.createElement("h2");
   const container = document.querySelector(".container");
-  nothingFound.innerText = "На нашем христианском сервере,ничего не найдено!!!";
+  const massText = [
+    "По проще что нибудь поищи",
+    `Я бездушная машина,я не знаю что это такое - ${input}!!!`,
+    "Интересный запрос,но увы для тебя ничего нет",
+    "Поищи в Google",
+    "На нашем христианском сервере,ничего не найдено!!!",
+    `Будь я поумнее,я бы нашел тебе ${input}((`,
+  ];
+  const randomText = massText[Math.floor(Math.random() * 6)];
+  nothingFound.innerText = randomText;
   container.append(nothingFound);
 }
 
-export { deleteCard, sortCard, renderContainer, showMessage, showPreloader };
+export {
+  deleteCard,
+  sortCard,
+  renderContainer,
+  showMessage,
+  showPreloader,
+  renderPreloader,
+};

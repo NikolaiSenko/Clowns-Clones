@@ -1,17 +1,11 @@
 import { createCard, createElement } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { initMasonry } from "./masonry.js";
-import { showPreloader } from "./utils.js";
+import { renderPreloader } from "./utils.js";
 import { onCard } from "../index.js";
 
 //Render
 function renderBoard(board) {
-  const preloader = createElement("div");
-  preloader.id = "preloader";
-  const preloaderGif = createElement("img");
-  preloaderGif.setAttribute("alt", "preloader");
-  preloaderGif.src = "img/preloader/Preloader-Gif.gif";
-  preloader.append(preloaderGif);
   const main = document.getElementById("main");
   const standartOption = document.getElementById("choice");
   standartOption.hidden = true;
@@ -33,8 +27,8 @@ function renderBoard(board) {
         }
       })
     );
+  renderPreloader();
   main.append(headerBoard, container, preloader);
-  showPreloader();
 }
 
 function deleteBoardCard(board, cardId) {

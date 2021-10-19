@@ -1,13 +1,13 @@
 import {
   sortCard,
   renderContainer,
-  showPreloader,
+  renderPreloader,
 } from "./components/utils.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
-import { createElement } from "./components/templates.js";
+
 document.addEventListener("DOMContentLoaded", app);
 
 function app() {
@@ -17,7 +17,7 @@ function app() {
   search.addEventListener("change", onSearch);
   selectBtn.addEventListener("change", onSelect);
   renderPinterest();
-  showPreloader();
+  renderPreloader();
 }
 
 //Render
@@ -30,20 +30,7 @@ function onBtn() {
   location.reload();
 }
 
-function createPreloader() {
-  const preloader = createElement("div");
-  preloader.id = "preloader";
-  const preloaderGif = createElement("img");
-  preloaderGif.setAttribute("alt", "preloader");
-  preloaderGif.src = "img/preloader/Preloader-Gif.gif";
-  preloader.append(preloaderGif);
-  const main = document.getElementById("main");
-  main.append(preloader);
-  showPreloader();
-}
-
 function onSearch(e) {
-  createPreloader();
   const input = e.target.value;
   const section = document.querySelector(".hero-board");
   if (section === null) {
@@ -56,7 +43,9 @@ function onSearch(e) {
         .then(randomCards)
         .then((posts) => sortCard(posts, input))
         .then((posts) =>
-          posts.length !== 0 ? renderCards(posts) : renderContainer()
+          posts.length !== 0
+            ? renderCards(posts) && renderPreloader()
+            : renderContainer(input)
         )
         .catch(alert);
     }
@@ -90,4 +79,4 @@ function onCard(board) {
   }
 }
 
-export { onCard, showPreloader };
+export { onCard };
