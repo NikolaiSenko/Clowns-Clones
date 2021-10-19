@@ -23,12 +23,20 @@ function sortCard(posts, input) {
   });
 }
 
-function showMessage(text){
+function showMessage(text) {
   const message = createMessageWindow(text);
   document.body.append(message);
   setTimeout(() => {
     message.remove();
   }, 1300);
+}
+
+function showPreloader() {
+  const preloader = document.getElementById("preloader");
+  preloader.classList.add("hide-preloader");
+  setTimeout(() => {
+    preloader.remove();
+  }, 1500);
 }
 
 function renderContainer() {
@@ -38,4 +46,4 @@ function renderContainer() {
   container.append(nothingFound);
 }
 
-export { deleteCard, sortCard, renderContainer, showMessage };
+export { deleteCard, sortCard, renderContainer, showMessage, showPreloader };
