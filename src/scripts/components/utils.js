@@ -28,7 +28,14 @@ function showMassage(text){
   document.body.append(message);
   setTimeout(() => {
     message.remove();
-  }, 700);
+  }, 1000);
 }
 
-export { deleteCard, sortCard, showMassage };
+function renderContainer() {
+  const nothingFound = document.createElement("h2");
+  const container = document.querySelector(".container");
+  nothingFound.innerText = "На нашем христианском сервере,ничего не найдено!!!";
+  container.append(nothingFound);
+}
+
+export { deleteCard, sortCard, renderContainer, showMassage };

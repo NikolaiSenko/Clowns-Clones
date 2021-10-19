@@ -1,4 +1,4 @@
-import { createAddWindow, createСhoiceWindow, createMessageWindow } from "./templates.js";
+import { createAddWindow, createСhoiceWindow } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { deleteCard, showMassage } from "./utils.js";
 import { WEBSTORAGECONFIG } from "../config/constant-data.js";
