@@ -36,6 +36,7 @@ function createAddWindow() {
   const { animals, films, others } = WEBSTORAGECONFIG;
   const windowAdd = createElement("div", "background-window");
   const modalAdd = createElement("div", "add-window");
+  const title = createElement("div", "title-modal-window", "Сохраните пост на доску")
   const firstBoard = createElement("button", "btn-choice-board", animals);
   firstBoard.id = "animals-id";
   const secondBoard = createElement("button", "btn-choice-board", films);
@@ -50,7 +51,7 @@ function createAddWindow() {
     secondBoard.hidden = section.outerText === "Films" ? true : false;
     thirdBoard.hidden = section.outerText === "Others" ? true : false;
   }
-  modalAdd.append(firstBoard, secondBoard, thirdBoard, btnClose);
+  modalAdd.append(title, firstBoard, secondBoard, thirdBoard, btnClose);
   windowAdd.append(modalAdd);
   return windowAdd;
 }
@@ -70,4 +71,11 @@ function createСhoiceWindow() {
   return modalChoice;
 }
 
-export { createCard, createAddWindow, createСhoiceWindow, createElement };
+function createMessageWindow(message) {
+  const windowMessage = createElement("div", "background-window");
+  const messageWindow = createElement("div", "message", message);
+  windowMessage.append(messageWindow)
+  return windowMessage;
+}
+
+export { createCard, createAddWindow, createСhoiceWindow, createElement, createMessageWindow };

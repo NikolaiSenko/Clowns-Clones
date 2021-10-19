@@ -1,4 +1,5 @@
 import { initMasonry } from "./masonry.js";
+import { createMessageWindow } from "./templates.js";
 
 function deleteCard(cardId) {
   const card = document.getElementById(cardId);
@@ -22,6 +23,14 @@ function sortCard(posts, input) {
   });
 }
 
+function showMassage(text){
+  const message = createMessageWindow(text);
+  document.body.append(message);
+  setTimeout(() => {
+    message.remove();
+  }, 1000);
+}
+
 function renderContainer() {
   const nothingFound = document.createElement("h2");
   const container = document.querySelector(".container");
@@ -29,4 +38,4 @@ function renderContainer() {
   container.append(nothingFound);
 }
 
-export { deleteCard, sortCard, renderContainer };
+export { deleteCard, sortCard, renderContainer, showMassage };

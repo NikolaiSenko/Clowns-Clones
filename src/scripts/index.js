@@ -67,18 +67,17 @@ function onSelect(event) {
 }
 
 function onCard(board) {
-  const main = document.getElementById("main");
   const target = event.target;
   const cardHeader = target.parentElement;
   const cardId = cardHeader.parentElement.id;
   if (target.className === "card__button--top") {
     if (target.innerHTML === "Сохранить") {
-      showAddWindow(main, cardId);
+      showAddWindow(cardId);
     } else if (target.innerHTML === "Удалить") {
       deleteBoardCard(board, cardId);
     }
   } else if (target.className === "card__button--bottom") {
-    showChoiceWindow(main, cardId);
+    showChoiceWindow(cardId);
   }
 }
 
