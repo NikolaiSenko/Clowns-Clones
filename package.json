@@ -10,7 +10,9 @@
   "staticFiles": {
     "staticPath": [
       "src/img/photos",
-      "src/img/avatars"
+      "src/img/avatars",
+      "src/img/preloader",
+      "src/img/favicon"
     ],
     "watcherGlob": "**"
   },
