@@ -1,4 +1,4 @@
-# [Pintagram] 
+# [Pintagram](https://nikolaisenko.github.io/Clowns-Clones/)
 Another almost successful [Pinterest](https://www.pinterest.com/) clone.
 * ***Who's creator:*** This project is a course work of 3 smart gyus and 1 great girl.
 * ***Short description:*** Our task was to create the website as close as possible to the original, any libraries and preprocessors are allowed.
