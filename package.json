@@ -11,11 +11,7 @@
     "staticPath": [
       "src/img/photos",
       "src/img/avatars",
-<<<<<<< HEAD
       "src/img/preLoader",
-=======
-      "src/img/preloader",
->>>>>>> 65a2f995e2721603e573c2b669c816d45d48f8d2
       "src/img/favicon"
     ],
     "watcherGlob": "**"
