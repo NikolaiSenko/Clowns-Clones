@@ -55,12 +55,12 @@ function renderContainer(input) {
   const nothingFound = document.createElement("h2");
   const container = document.querySelector(".container");
   const massText = [
-    "По проще что нибудь поищи",
-    `Я бездушная машина,я не знаю что это такое - ${input}!!!`,
-    "Интересный запрос,но увы для тебя ничего нет",
+    "По проще что-нибудь поищи",
+    `Я бездушная машина,я не знаю, что такое ${input}!!!`,
+    "Интересный запрос,но увы, для тебя ничего нет",
     "Поищи в Google",
-    "На нашем христианском сервере,ничего не найдено!!!",
-    `Будь я поумнее,я бы нашел тебе ${input}((`,
+    "На нашем христианском сервере ничего не найдено!!!",
+    `Будь я поумнее, я бы нашел тебе ${input}((`,
   ];
   const randomText = massText[Math.floor(Math.random() * 6)];
   nothingFound.innerText = randomText;
