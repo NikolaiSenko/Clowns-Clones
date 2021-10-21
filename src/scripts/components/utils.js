@@ -44,7 +44,7 @@ function renderPreloader() {
   preloader.id = "preloader";
   const preloaderGif = createElement("img");
   preloaderGif.setAttribute("alt", "preloader");
-  preloaderGif.src = "img/preloader/Preloader-Gif.gif";
+  preloaderGif.src = "Preloader-Gif.gif";
   preloader.append(preloaderGif);
   const main = document.getElementById("main");
   main.append(preloader);
