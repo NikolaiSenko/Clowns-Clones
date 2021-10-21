@@ -1,8 +1,13 @@
-import { sortCard, renderContainer } from "./components/utils.js";
+import {
+  sortCard,
+  renderContainer,
+  renderPreloader,
+} from "./components/utils.js";
 import { renderBoard, deleteBoardCard } from "./components/board.js";
 import { showAddWindow, showChoiceWindow } from "./components/modal-windows.js";
 import { loadCards, randomCards, renderCards } from "./components/fetchAPI.js";
 import { WEBSTORAGECONFIG } from "./config/constant-data.js";
+
 document.addEventListener("DOMContentLoaded", app);
 
 function app() {
@@ -12,16 +17,7 @@ function app() {
   search.addEventListener("change", onSearch);
   selectBtn.addEventListener("change", onSelect);
   renderPinterest();
-  showPreloader();
-}
-
-//Preloader
-function showPreloader() {
-  let preloader = document.getElementById("preloader");
-  preloader.classList.add("hide-preloader");
-  setTimeout(() => {
-    preloader.classList.add("preloader-hidden");
-  }, 1500);
+  renderPreloader();
 }
 
 //Render
@@ -47,7 +43,9 @@ function onSearch(e) {
         .then(randomCards)
         .then((posts) => sortCard(posts, input))
         .then((posts) =>
-          posts.length !== 0 ? renderCards(posts) : renderContainer()
+          posts.length !== 0
+            ? renderCards(posts) && renderPreloader()
+            : renderContainer(input)
         )
         .catch(alert);
     }

@@ -1,12 +1,13 @@
 import { createCard, createElement } from "./templates.js";
 import { getStorageData, setStorageData } from "./storageApi.js";
 import { initMasonry } from "./masonry.js";
+import { deleteCard, renderPreloader } from "./utils.js";
 import { onCard } from "../index.js";
 
 //Render
 function renderBoard(board) {
   const main = document.getElementById("main");
-  const standartOption = document.getElementById("choice")
+  const standartOption = document.getElementById("choice");
   standartOption.hidden = true;
   const boardData = getStorageData(board);
   main.innerHTML = "";
@@ -26,7 +27,8 @@ function renderBoard(board) {
         }
       })
     );
-  main.append(headerBoard, container);
+  renderPreloader();
+  main.append(headerBoard, container, preloader);
 }
 
 function deleteBoardCard(board, cardId) {
@@ -34,7 +36,7 @@ function deleteBoardCard(board, cardId) {
   const index = boardData.indexOf(cardId);
   boardData.splice(index, 1);
   setStorageData(board, boardData);
-  renderBoard(board);
+  deleteCard(cardId);
 }
 
 export { renderBoard, deleteBoardCard };
